@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_184224) do
+ActiveRecord::Schema.define(version: 2020_12_11_185323) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_184224) do
     t.datetime "dob"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "comments", "stories"
