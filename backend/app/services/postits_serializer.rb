@@ -1,5 +1,5 @@
 
-class UserSerializer
+class PostitsSerializer
     def initialize(user_obj)
         @User = user_obj
     end
