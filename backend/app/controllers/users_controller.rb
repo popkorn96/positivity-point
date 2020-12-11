@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :user, :only => [:show, :update, :destroy]
     def index 
         users = User.all
-        render json: userSerializer.new(users).to_serialized_json
+        render json: UserSerializer.new(users).to_serialized_json
     end
     def create 
         render json: User.create(user_params)
