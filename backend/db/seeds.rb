@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 content = Faker::Lorem.sentence(word_count: 15)
 date = Faker::Date.between(from: '1980-09-23', to: '2001-09-25')
 User.create!(name:  "Example User",
