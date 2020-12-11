@@ -1,0 +1,2 @@
+class PostItsController < ApplicationController
+end
