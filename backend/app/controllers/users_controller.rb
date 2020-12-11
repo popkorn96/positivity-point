@@ -2,18 +2,18 @@ class UsersController < ApplicationController
     before_action :user, :only => [:show, :update, :destroy]
     def index 
         users = User.all
-        render json: UserSerializer.new(users).to_serialized_json
+        render json: UsersSerializer.new(users).to_serialized_json
     end
     def create 
         render json: User.create(user_params)
     end
     def show
-        render json: UserSerializer.new(@user).to_serialized_json
+        render json: UsersSerializer.new(@user).to_serialized_json
     end
     def update
         @user.update(user_params)
             if @user.save
-                render json: UserSerializer.new(@user).to_serialized_json
+                render json: UsersSerializer.new(@user).to_serialized_json
             else 
                 render json: {errors: @user.errors.full_messages}
         end

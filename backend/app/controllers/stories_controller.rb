@@ -2,18 +2,18 @@ class StoriesController < ApplicationController
     before_action :story, :only => [:show, :update, :destroy]
     def index 
         stories = Story.all
-        render json: StorySerializer.new(storys).to_serialized_json
+        render json: StoriesSerializer.new(stories).to_serialized_json
     end
     def create 
         render json: Story.create(story_params)
     end
     def show
-        render json: StorySerializer.new(@story).to_serialized_json
+        render json: StoriesSerializer.new(@story).to_serialized_json
     end
     def update
         @story.update(story_params)
             if @story.save
-                render json: StorySerializer.new(@story).to_serialized_json
+                render json: StoriesSerializer.new(@story).to_serialized_json
             else 
                 render json: {errors: @story.errors.full_messages}
         end

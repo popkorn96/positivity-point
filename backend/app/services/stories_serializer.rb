@@ -1,12 +1,12 @@
 
-class UserSerializer
-    def initialize(user_obj)
-        @User = user_obj
+class StoriesSerializer
+    def initialize(story_obj)
+        @Story = story_obj
     end
     def to_serialized_json
-        @User.to_json(:include => {
-            :gifts => {
-                :except => [:created_at]
+        @Story.to_json(:include => {
+            :comments => {
+                :except => [:updated_at]
             }},
             :except => [:created_at, :updated_at])
     end
