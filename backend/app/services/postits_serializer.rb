@@ -1,9 +1,9 @@
 
 class PostitsSerializer
-    def initialize(user_obj)
-        @User = user_obj
+    def initialize(post_it_obj)
+        @post_it = post_it_obj
     end
     def to_serialized_json
-        @User.to_json(:except => [:updated_at])
+        @post_it.to_json(:except => [:updated_at])
     end
 end
