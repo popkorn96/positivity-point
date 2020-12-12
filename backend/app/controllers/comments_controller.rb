@@ -26,6 +26,6 @@ class CommentsController < ApplicationController
         @comment = Comment.find(params[:id])
     end
     def comment_params
-        params.permit(:user_id, :content)
+        params.permit(:user_id, :story_id, :content)
     end
 end
