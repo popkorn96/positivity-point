@@ -1,8 +1,9 @@
-function storyReducer(state = {stories: []}, action){
+function storyReducer(state = {all: []}, action){
     switch(action.type){
         case "FETCH_STORY_SUCCESS":
-            return console.log('success')
+            return {...state, stories: action.payload};
         default: 
         return state;
     }
 }
+export default storyReducer;
