@@ -6,12 +6,12 @@ import Home from './components/Home';
 import Stories from './components/Stories';
 import PostIts from './components/PostIts';
 import SavedStories from './components/SavedStories';
-import {Nav} from './components/Nav'
+import { NavigationBar } from './components/NavigationBar';
 
 function App() {
   return (
     <Router>
-      <Nav />
+      <NavigationBar />
       <Switch>
         <Route exact path="/" component= {Home}/>
         <Route path="/stories" component={Stories}/>
