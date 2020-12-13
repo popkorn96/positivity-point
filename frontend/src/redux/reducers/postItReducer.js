@@ -1,9 +1,9 @@
-function storyReducer(state = {all: []}, action){
+function postItReducer(state = {all: []}, action){
     switch(action.type){
-        case "FETCH_STORY_SUCCESS":
+        case "FETCH_POST_IT_SUCCESS":
             return {...state, all: action.payload};
         default: 
         return state;
     }
 }
-export default storyReducer;
+export default postItReducer;
