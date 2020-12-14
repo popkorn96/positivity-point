@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class Signup extends Component {
     constructor(props){
-        super();
+        super(props);
         this.state = {
             name: "",
             dob: "",
@@ -29,7 +29,13 @@ export default class Signup extends Component {
                 password: password
             }
         }, { withCredentials:true })
-        .then(resp => resp.json())
+        .then(response => {
+            if (response.data.status === "created"){
+                this.props.handleSuccessfulAuth(response.data)
+            }})
+        .catch(error => {
+            console.log("sign up error", error)
+        });
         console.log("form submitted")
     }
     handleOnChange(event){

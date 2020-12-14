@@ -57,7 +57,7 @@ return (
           />          
           
         
-          <button placeholder="submit" type="submit">
+          <button type="submit" class="">
             Sign Up
           </button>
       

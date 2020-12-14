@@ -22,25 +22,26 @@ class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {}
      };
+     this.handleLogin = this.handleLogin.bind(this)
   }
-componentDidMount() {
-  this.loginStatus()
-}
-loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-    {withCredentials: true})    
-.then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-      } else {
-        this.handleLogout()
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
+// componentDidMount() {
+//   this.loginStatus()
+// }
+// loginStatus = () => {
+//     axios.get('http://localhost:3001/logged_in', 
+//     {withCredentials: true})    
+// .then(response => {
+//       if (response.data.logged_in) {
+//         this.handleLogin(response)
+//       } else {
+//         this.handleLogout()
+//       }
+//     })
+//     .catch(error => console.log('api errors:', error))
+//   }
 handleLogin = (data) => {
     this.setState({
-      isLoggedIn: true,
+      loggedInStatus: "LOGGED_IN",
       user: data.user
     })
   }
@@ -59,7 +60,7 @@ handleLogout = () => {
         <Route 
         path ="/main" 
         render={props => (
-          <Main {...props} loggedInStatus={this.state.loggedInStatus} />
+          <Main {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
         )}
         />
         <Route path ="/signup" component={SignUp}/>

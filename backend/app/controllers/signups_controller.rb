@@ -6,7 +6,7 @@ class SignupsController < ApplicationController
             email: signup_params[:email],
             password: signup_params[:password]
             )
-        if @user && @user.authenticate(session_params[:password])
+        if @user
             login!
             render json: {
               status: :created,
