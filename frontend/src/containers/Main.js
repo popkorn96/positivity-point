@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
+import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
 
 export default class Main extends Component{
@@ -18,6 +19,7 @@ export default class Main extends Component{
         <h3>STATUS: <i>{this.props.loggedInStatus}</i></h3>
         {/* <Login /> */}
         <Signup handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
             {/* <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/login'>Log In</Link></button><hr></hr>
             <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/signup'>Sign Up</Link></button><hr></hr> */}
     </div>
