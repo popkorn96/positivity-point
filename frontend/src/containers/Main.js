@@ -8,7 +8,7 @@ export default class Main extends Component{
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this)
     }
     handleSuccessfulAuth(data){
-      this.handleLogin(data);
+      this.props.handleLogin(data);
       this.props.history.push("/")
     }
   render (){
