@@ -26,7 +26,7 @@ render() {
 return (
       <div>
         <h1>Sign Up</h1>        
-<form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
             placeholder="name"
             type="text"

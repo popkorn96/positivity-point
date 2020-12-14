@@ -21,19 +21,20 @@ handleSubmit = (event) => {
     event.preventDefault()
   };
 render() {
-    const {email, password} = this.statereturn (
+    const {email, password} = this.state
+    return (
       <div>
         <h1>Log In</h1>        
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="email"
+            placeholder="Email"
             type="text"
             name="email"
             value={email}
             onChange={this.handleChange}
           />
           <input
-            placeholder="password"
+            placeholder="Password"
             type="password"
             name="password"
             value={password}

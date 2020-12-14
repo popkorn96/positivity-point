@@ -4,6 +4,9 @@ import axios from 'axios'
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Main from './containers/Main'
+import SignUp from './components/SignUp';
+import Login from './components/LogIn'
 import Home from './containers/Home';
 import Stories from './components/Stories';
 import PostIts from './components/PostIts';
@@ -52,6 +55,9 @@ handleLogout = () => {
     <Router>
       <NavigationBar />
       <Switch>
+        <Route path ="/signup" component={SignUp}/>
+        <Route path ="/main" component={Main}/>
+        <Route path ="/login" component={Login}/>
         <Route exact path="/" component= {Home}/>
         <Route path="/stories" component={Stories}/>
         <Route path="/post-its" component={PostIts}/>
