@@ -1,33 +1,42 @@
 class SessionsController < ApplicationController
-
-    def new
-      @user = User.new
-    end
-  
     def create
-      if auth 
-        user = User.find_or_create_by_omniauth(auth)
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      else 
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          redirect_to user_path(user)
+        @user = User.find_by(email: session_params[:email])
+      
+        if @user && @user.authenticate(session_params[:password])
+          login!
+          render json: {
+            logged_in: true,
+            user: @user
+          }
         else
-        render 'sessions/new'
+          render json: { 
+            status: 401,
+            errors: ['no such user, please try again']
+          }
         end
-      end
     end
-  
-      def destroy
-          session.delete(:user_id)
-      @current_user = nil
-      redirect_to root_path
-      end
-  
-      private
-      def auth
-          request.env['omniauth.auth']
+    def is_logged_in?
+        if logged_in? && current_user
+          render json: {
+            logged_in: true,
+            user: current_user
+          }
+        else
+          render json: {
+            logged_in: false,
+            message: 'no such user'
+          }
+        end
     end
-end
+    def destroy
+          logout!
+          render json: {
+            status: 200,
+            logged_out: true
+          }
+    end
+    private
+    def session_params
+          params.require(:user).permit(:email, :password)
+    end
+    end
