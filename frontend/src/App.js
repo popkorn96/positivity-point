@@ -35,8 +35,11 @@ class App extends Component {
           loggedInStatus: "LOGGED_IN",
           user: response.data.user
         })
-      } else {
-        this.handleLogout()
+      } else if (!response.data.logged_in && this.state.loggedInStatus === "LOGGED_IN"){
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN",
+          user: {}
+        })
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -61,15 +64,19 @@ class App extends Component {
       <NavigationBar />
       <Switch>
         <Route 
-        path ="/main" 
-        render={props => (
+        path ="/main" render={props => (
           <Main {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
         )}/>
-        <Route exact path="/" component= {Home}/>
+        <Route exact path="/" render={props => (
+          <Home {...props} loggedInStatus={this.state.loggedInStatus} />
+        )}/>
         <Route path="/stories" component={Stories}/>
         <Route path="/post-its" component={PostIts}/>
         <Route path="/saved-stories" component={SavedStories}/>
-        <Route path="/account" component={Account}/>
+        <Route 
+        path="/account" render={props => (
+          <Account {...props} loggedInStatus={this.state.loggedInStatus} />
+        )}/>
       </Switch>
     </Router>
     )};

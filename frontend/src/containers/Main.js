@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import {Link} from 'react-router-dom'
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
 
@@ -15,7 +14,7 @@ export default class Main extends Component{
   render (){
   return (
     <div>
-        <h1 class="text-center" >Main</h1>
+        <h1 class="text-center" >Sign Up or Login</h1>
         <h3>STATUS: <i>{this.props.loggedInStatus}</i></h3>
         {/* <Login /> */}
         <Signup handleSuccessfulAuth={this.handleSuccessfulAuth}/>
