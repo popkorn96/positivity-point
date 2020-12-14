@@ -1,4 +1,6 @@
 require_relative 'boot'
+config.middleware.use ActionDispatch::Cookies    
+config.middleware.use ActionDispatch::Session::CookieStore
 
 require "rails"
 # Pick the frameworks you want:
