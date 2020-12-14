@@ -3,32 +3,30 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-  .navbar { background-color: #F48190; }
+  .navbar { background-color: #00A0FC; }
   a, .navbar-nav, .navbar-light .nav-link {
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: #00000;
     &:hover { color: white; }
   }
   .navbar-brand {
-    font-size: 1.8em;
+    font-size: 1.6em;
     color: #00000;
     &:hover { color: white; }
   }
-  .form-center {
-    position: absolute !important;
-    left: 25%;
+  .form-right {
+	position: absolute !important;
+	width:430px !important;
+    left: 50%;
     right: 25%;
   }
-`;
+  `;
 
 export const NavigationBar = () => (
-  <Styles>
+	<Styles>
     <Navbar expand="lg">
       <Navbar.Brand href="/">Positivity Point - Home</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-      <Form className="form-center">
-        <FormControl type="text" placeholder="Search" className="" />
-      </Form>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item><Nav.Link href="/stories">Stories</Nav.Link></Nav.Item>
@@ -36,6 +34,9 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="/saved-stories">Saved Stories</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
+	  <Form className="form-right">
+        <FormControl type="text" placeholder="Search" className="" />
+      </Form>
     </Navbar>
   </Styles>
 )
