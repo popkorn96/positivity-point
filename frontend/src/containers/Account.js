@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class Account extends Component {
+    constructor(props){
+        super(props)
+        this.handleLogoutClick = this.handleLogoutClick.bind(this)
+    }
+    handleLogoutClick(event){
+        event.preventDefault();
+        axios.delete(`http://localhost:3000/logout`, {withCredentials: true})
+        .then(response => {
+            this.props.handleLogout();
+        }).catch(error => {console.log("logout error", error)})
+    };
     render() {
         return (
             <div>
@@ -9,7 +21,11 @@ export default class Account extends Component {
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >See All <strong>User</strong> Post Its</button><hr></hr>
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >See All <strong>User</strong> Stories</button><hr></hr>
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >Edit Information</button><hr></hr>
-                <button type="button" class="btn btn-outline-primary btn-lg btn-block" >Logout</button><hr></hr>
+                <button 
+                type="button" 
+                class="btn btn-outline-primary btn-lg btn-block"
+                onClick={(event) => this.handleLogoutClick()}
+                >Logout</button><hr></hr>
             </div>
         )
     }

@@ -21,6 +21,7 @@ class App extends Component {
       user: {}
      };
      this.handleLogin = this.handleLogin.bind(this)
+     this.handleLogout = this.handleLogout.bind(this)
   }
   componentDidMount() {
     this.loginStatus()
@@ -53,7 +54,7 @@ class App extends Component {
   }
   handleLogout = () => {
     this.setState({
-      isLoggedIn: false,
+      loggedInStatus: "NOT_LOGGED_IN",
       user: {}
     })
   }
@@ -75,7 +76,7 @@ class App extends Component {
         <Route path="/saved-stories" component={SavedStories}/>
         <Route 
         path="/account" render={props => (
-          <Account {...props} loggedInStatus={this.state.loggedInStatus} />
+          <Account {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} />
         )}/>
       </Switch>
     </Router>
