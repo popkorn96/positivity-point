@@ -15,10 +15,11 @@ import Account from './containers/Account'
 import { NavigationBar } from './components/NavigationBar';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { 
       isLoggedIn: false,
+      loggedInStatus: "NOT_LOGGED_IN",
       user: {}
      };
   }
@@ -55,8 +56,13 @@ handleLogout = () => {
     <Router>
       <NavigationBar />
       <Switch>
+        <Route 
+        path ="/main" 
+        render={props => (
+          <Main {...props} loggedInStatus={this.state.loggedInStatus} />
+        )}
+        />
         <Route path ="/signup" component={SignUp}/>
-        <Route path ="/main" component={Main}/>
         <Route path ="/login" component={Login}/>
         <Route exact path="/" component= {Home}/>
         <Route path="/stories" component={Stories}/>
