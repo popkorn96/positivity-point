@@ -16,8 +16,8 @@ const Styles = styled.div`
   }
   .form-right {
 	position: absolute !important;
-	width:430px !important;
-    left: 50%;
+	width:700px !important;
+    left: 25%;
     right: 25%;
   }
   `;
@@ -32,6 +32,7 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="/stories">Stories</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/post-its">Post-Its</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/saved-stories">Saved Stories</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/saved-stories">Account</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
 	  <Form className="form-right">

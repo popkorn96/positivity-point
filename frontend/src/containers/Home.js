@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Goals from './Goals'
+import Goals from '../components/Goals'
 
 class Home extends Component {
     render(){    

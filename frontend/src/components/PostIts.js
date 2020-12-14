@@ -10,7 +10,8 @@ class PostIts extends Component{
     render(){
         return (
             <div>
-                <h1>Post-Its</h1>
+                <h1 class="text-center">Post Its</h1>
+                <button type="button" class="btn btn-outline-primary btn-lg btn-block" >Create New Post It</button><hr></hr>
                 <ul>{this.props.postIts.map((postIt, i) => 
                 <PostItItem key={i} postIt={postIt} />)}</ul>
             </div>
