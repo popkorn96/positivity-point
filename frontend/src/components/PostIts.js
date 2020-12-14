@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPostIts } from '../redux/actions/postItActions'
-import PostItListItem from './PostItListItem'
+import { getPostIts } from '../redux/actions/postItActions';
+import PostItItem from '../items/PostItItem';
 
 class PostIts extends Component{
     componentDidMount() {
         this.props.getPostIts();
     };
     render(){
-    return (
-        <div>
-            <h1>Post-Its</h1>
+        return (
             <div>
+                <h1>Post-Its</h1>
                 <ul>{this.props.postIts.map((postIt, i) => 
-                <PostItListItem key={i} story={postIt}/>)}</ul>
+                <PostItItem key={i} postIt={postIt} />)}</ul>
             </div>
-        </div>
-    )}
+        )
+    }
 }
 const mapStateToProps = ({postIts}) => {
     return {
         postIts: postIts.all
     }
 }
-export default connect(mapStateToProps, {getPostIts})(PostIts)
+export default connect(mapStateToProps, { getPostIts })(PostIts)
