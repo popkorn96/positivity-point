@@ -1,9 +1,11 @@
-// import logo from './logo.svg';
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { fetchUser } from './redux/actions/userActions'
+
 import Main from './containers/Main'
 import Home from './containers/Home';
 import Stories from './components/Stories';
@@ -17,44 +19,25 @@ class App extends Component {
     super();
     this.state = { 
       isLoggedIn: false,
-      loggedInStatus: "NOT_LOGGED_IN",
+      // loggedInStatus: "NOT_LOGGED_IN",
       user: {}
      };
      this.handleLogin = this.handleLogin.bind(this)
      this.handleLogout = this.handleLogout.bind(this)
   }
   componentDidMount() {
-    this.loginStatus()
-  }
-
-  loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-    {withCredentials: true})    
-    .then(response => {
-      if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
-        this.setState({
-          loggedInStatus: "LOGGED_IN",
-          user: response.data.user
-        })
-      } else if (!response.data.logged_in && this.state.loggedInStatus === "LOGGED_IN"){
-        this.setState({
-          loggedInStatus: "NOT_LOGGED_IN",
-          user: {}
-        })
-      }
-    })
-    .catch(error => console.log('api errors:', error))
+    this.props.fetchUser()
   }
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      loggedInStatus: "LOGGED_IN",
+      // loggedInStatus: "LOGGED_IN",
       user: data.user
     })
   }
   handleLogout = () => {
     this.setState({
-      loggedInStatus: "NOT_LOGGED_IN",
+      isLoggedIn: false,
       user: {}
     })
   }
@@ -66,21 +49,22 @@ class App extends Component {
       <Switch>
         <Route 
         path ="/main" render={props => (
-          <Main {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
-        )}/>
-        <Route exact path="/" render={props => (
-          <Home {...props} loggedInStatus={this.state.loggedInStatus} />
-        )}/>
+          <Main {...props} handleLogin={this.handleLogin} />)}/>
+        <Route exact path="/" component={Home}/>
         <Route path="/stories" component={Stories}/>
         <Route path="/post-its" component={PostIts}/>
         <Route path="/saved-stories" component={SavedStories}/>
         <Route 
         path="/account" render={props => (
-          <Account {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} />
-        )}/>
+          <Account {...props} handleLogout={this.handleLogout}/>)}/>
       </Switch>
     </Router>
     )};
 }
 
-export default App;
+const mapDispatchToProps = state => {
+  return {
+    user: state.user,
+  }
+}
+export default connect(mapDispatchToProps,{fetchUser})(App);

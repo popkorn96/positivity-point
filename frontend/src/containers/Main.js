@@ -12,15 +12,14 @@ export default class Main extends Component{
       this.props.history.push("/")
     }
   render (){
-  return (
-    <div>
-        <h1 class="text-center" >Sign Up or Login</h1>
-        <h3>STATUS: <i>{this.props.loggedInStatus}</i></h3>
-        {/* <Login /> */}
-        <Signup handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-            {/* <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/login'>Log In</Link></button><hr></hr>
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/signup'>Sign Up</Link></button><hr></hr> */}
-    </div>
+    return (
+      <div>
+          <h1 class="text-center" >Sign Up or Login</h1>
+          <h3>STATUS: <i>{this.props.loggedInStatus}</i></h3>
+          <Signup handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+          <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+              {/* <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/login'>Log In</Link></button><hr></hr>
+              <button type="button" class="btn btn-outline-primary btn-lg btn-block" ><Link to='/signup'>Sign Up</Link></button><hr></hr> */}
+      </div>
   );}
 };
