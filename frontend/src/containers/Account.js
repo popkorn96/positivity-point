@@ -6,12 +6,11 @@ export default class Account extends Component {
         super(props)
         this.handleLogoutClick = this.handleLogoutClick.bind(this)
     }
-    handleLogoutClick(event){
-        event.preventDefault();
-        axios.delete(`http://localhost:3000/logout`, {withCredentials: true})
+    handleLogoutClick(){
+        axios.delete(`http://localhost:3001/logout`, {withCredentials: true})
         .then(response => {
             this.props.handleLogout();
-        }).catch(error => {console.log("logout error", error)})
+        }).catch(error => console.log("logout error", error))
     };
     render() {
         return (
@@ -24,7 +23,7 @@ export default class Account extends Component {
                 <button 
                 type="button" 
                 class="btn btn-outline-primary btn-lg btn-block"
-                onClick={(event) => this.handleLogoutClick()}
+                onClick={() => this.handleLogoutClick()}
                 >Logout</button><hr></hr>
             </div>
         )

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
-  
+
     def create
         @user = User.find_by(email: session_params[:email])
       
@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
           }
         end
     end
-    def destroy
+    def logout
           logout!
           render json: {
             status: 200,
@@ -54,4 +54,4 @@ class SessionsController < ApplicationController
     def session_params
           params.require(:user).permit(:email, :password)
     end
-    end
+end 
