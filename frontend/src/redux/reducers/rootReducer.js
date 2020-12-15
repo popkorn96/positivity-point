@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {FETCH_USER_PENDING, FETCH_USER_SUCCESS, FETCH_USER_ERROR} from '../actions/types';
+import {FETCH_USER_SUCCESS} from '../actions/types';
  
 const rootReducer = combineReducers({
   user: userReducer,
@@ -19,37 +19,18 @@ function goalReducer(state = {all: []}, action){
     }
 }
 
-export function userReducer(state = {
-  pending: false,
-  user: {},
-  error: null}, action) {
+export function userReducer(state = {userObj: {}}, action) {
   
     switch(action.type) {
-        case FETCH_USER_PENDING: 
-            return {
-                ...state,
-                pending: true
-            }
         case FETCH_USER_SUCCESS:
             return {
-                ...state,
-                pending: false,
-                user: action.payload
-            }
-        case FETCH_USER_ERROR:
-            return {
-                ...state,
-                pending: false,
-                error: action.error
+                ...state, userObj: action.payload
             }
         default: 
             return state;
     }
 }
 
-export const getUser = state => state.user;
-export const getUserPending = state => state.pending;
-export const getUserError = state => state.error;
 
 function storyReducer(state = {all: []}, action){
   switch(action.type){

@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import AccountItem from '../items/AccountItem'
 import axios from 'axios';
-// import { connect } from 'react-redux';
+import {getUser} from '../redux/actions/getUser';
+import { connect } from 'react-redux';
 
 class Account extends Component {
+    componentDidMount() {
+        this.props.getUser();
+    }
     constructor(props){
         super(props)
         this.handleLogoutClick = this.handleLogoutClick.bind(this)
@@ -16,6 +20,9 @@ class Account extends Component {
             this.props.history.push("/main")
         }).catch(error => console.log("logout error", error))
     };
+    renderUser(){
+
+    }
     render() {
         return (
             <div>
@@ -33,5 +40,10 @@ class Account extends Component {
         )
     }
 }
+const mapStateToProps = ({user}) => {
+    return {
+        user: user
+    }
+}
 // export default connect(mapStateToProps, {user})(Account);
-export default Account;
+export default connect(mapStateToProps, {getUser})(Account);
