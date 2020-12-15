@@ -1,16 +1,19 @@
-export const fetchUser = () => {
+export function fetchUserLoginStatus() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_USER'})
-    fetch('http://localhost:3001/logged_in')    
+    fetch(`http://localhost:3001/logged_in`, 
+    {withCredentials: true})    
     .then(response => {
       if (response.data.logged_in) {
-          return response.json()
-      } else if (!response.data.logged_in){
-          dispatch({ type: 'LOGIN_FAILED', })
-      }
-    })
+        const user = response.data.user
+        dispatch({ type: 'RENDER_USER', payload: user}) }
+      else if (!response.data.logged_in){
+        dispatch({ type: 'LOGIN_FAILED', })
+      }})
     .catch(error => console.log('api errors:', error))
 }}
+
+
 // export const fetchCats = () => {
 //   return (dispatch) => {
 //     dispatch({ type: 'LOADING_CATS'})
