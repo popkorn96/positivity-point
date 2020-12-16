@@ -25,4 +25,4 @@ const mapStateToProps = ({goals}) => {
     }
 }
 
-export default connect(mapStateToProps, {getGoals})(Goals)
+export default connect(({goals}) => ({ goals: goals.all }), {getGoals})(Goals)

@@ -5,12 +5,13 @@ import {getUser} from '../redux/actions/getUser';
 import { connect } from 'react-redux';
 
 class Account extends Component {
-    componentDidMount() {
-        this.props.getUser();
-    }
     constructor(props){
         super(props)
         this.handleLogoutClick = this.handleLogoutClick.bind(this)
+    }
+    componentDidMount() {
+        const id = this.props.user.id
+        this.props.getUser(id);
     }
     
     handleLogoutClick(){
@@ -27,6 +28,7 @@ class Account extends Component {
         return (
             <div>
                 <h1 class="text-center">Account Information</h1>
+                <h2 class="text-center"><AccountItem user={this.props.user}/></h2>
                 <h3 class="text-center">STATUS: <i>{this.props.loggedInStatus}</i></h3>
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >See All <strong>User</strong> Post Its</button><hr></hr>
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >See All <strong>User</strong> Stories</button><hr></hr>
@@ -45,5 +47,4 @@ const mapStateToProps = ({user}) => {
         user: user
     }
 }
-// export default connect(mapStateToProps, {user})(Account);
 export default connect(mapStateToProps, {getUser})(Account);
