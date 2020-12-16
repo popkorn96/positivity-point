@@ -3,6 +3,9 @@ import axios from 'axios';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { history } from '../_helpers';
+import { alertActions } from '../_actions';
+
 import Main from './containers/Main'
 import Home from './containers/Home';
 import Stories from './components/Stories';
@@ -31,7 +34,7 @@ class App extends Component {
     {withCredentials: true})    
     .then(response => {
       if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
-        
+
         this.setState({
           loggedInStatus: "LOGGED_IN",
           user: response.data.user,
