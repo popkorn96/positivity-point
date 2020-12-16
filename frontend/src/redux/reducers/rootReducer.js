@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import {FETCH_USER_SUCCESS} from '../actions/types';
+
+import goalReducer from './goalReducer'
+import userReducer from './userReducer'
+import storyReducer from './storyReducer'
+import postItReducer from './postItReducer'
  
 const rootReducer = combineReducers({
   user: userReducer,
@@ -10,41 +14,9 @@ const rootReducer = combineReducers({
  
 export default rootReducer;
 
-function goalReducer(state = {all: []}, action){
-    switch(action.type){
-        case "FETCH_GOAL_SUCCESS":
-            return {...state, all: action.payload};
-        default: 
-        return state;
-    }
-}
-
-export function userReducer(state = {userObj: {}}, action) {
-  
-    switch(action.type) {
-        case FETCH_USER_SUCCESS:
-            return {
-                ...state, userObj: action.payload
-            }
-        default: 
-            return state;
-    }
-}
 
 
-function storyReducer(state = {all: []}, action){
-  switch(action.type){
-      case "FETCH_STORY_SUCCESS":
-          return {...state, all: action.payload};
-      default: 
-      return state;
-  }
-}
-function postItReducer(state = {all: []}, action){
-  switch(action.type){
-      case "FETCH_POST_IT_SUCCESS":
-          return {...state, all: action.payload};
-      default: 
-      return state;
-  }
-}
+
+
+
+

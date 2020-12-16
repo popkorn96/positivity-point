@@ -9,10 +9,10 @@ class Account extends Component {
         super(props)
         this.handleLogoutClick = this.handleLogoutClick.bind(this)
     }
-    componentDidMount() {
-        const id = this.props.user.id
-        this.props.getUser(id);
-    }
+    // componentDidMount() {
+    //     const id = this.props.user.id
+    //     this.props.getUser(id);
+    // }
     
     handleLogoutClick(){
         axios.delete(`http://localhost:3001/logout`, {withCredentials: true})
@@ -25,6 +25,8 @@ class Account extends Component {
 
     }
     render() {
+        const { user } = this.props;
+        console.log(user)
         return (
             <div>
                 <h1 class="text-center">Account Information</h1>
@@ -42,9 +44,12 @@ class Account extends Component {
         )
     }
 }
-const mapStateToProps = ({user}) => {
+const mapStateToProps = state => {
     return {
-        user: user
+        user: state.user
     }
 }
-export default connect(mapStateToProps, {getUser})(Account);
+const mapDispatchToProps = dispatch => ({
+    getUser: dispatch(getUser())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
