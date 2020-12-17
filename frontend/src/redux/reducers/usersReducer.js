@@ -17,27 +17,27 @@ import {
   // FETCH_CATEGORIES,
 } from "../actions/types";
 
-export default function usersReducer(
+export const usersReducer = (
   state = { 
-    isLoggedIn: false, 
+    logged_in: false, 
     user: {}, 
     emailError: "", 
     passwordError: "" },
   action
-){
+)=>{
   const { payload, emailEr, passwordEr, emailError, passwordError, passwordConfirmationError, status,  type } = action;
 
   switch (type) {
     case SIGNUP:
       return {
         ...state,
-        isLoggedIn: true,
+        logged_in: true,
         user: payload,
       };
 
     case LOGIN:
       return {
-        isLoggedIn: true,
+        logged_in: true,
         user: payload,
       };
 
@@ -56,19 +56,19 @@ export default function usersReducer(
       };
     case LOGGED_IN:
       return {
-        isLoggedIn: true,
+        logged_in: true,
         user: payload.user,
       };
 
     case LOGGED_OUT:
       return {
-        isLoggedIn: false,
+        logged_in: false,
         user: {},
       };
 
     case LOGOUT:
       return {
-        isLoggedIn: false,
+        logged_in: false,
         usersReducer: {},
       };
 

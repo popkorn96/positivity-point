@@ -32,7 +32,7 @@ class UsersController < ApplicationController
                 login!  
                 render json: {
                 status: :created,
-                user: @user
+                user: UserSerializer.new(@user)
             }
            else 
                render json: {

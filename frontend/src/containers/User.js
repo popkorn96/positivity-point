@@ -11,16 +11,16 @@ class UserSessionStatus extends Component {
   render() {
     return (
       <div>
-        <NavigationBar isLoggedIn={this.props.isLoggedIn} user={this.props.user} />
+        <NavigationBar logged_in={this.props.logged_in} user={this.props.user} />
       </div>
     );
   }
 }
 
 const mapStateToProps = ({ usersReducer }) => {
-  const { isLoggedIn, user } = usersReducer;
+  const { logged_in, user } = usersReducer;
   return {
-    isLoggedIn: isLoggedIn,
+    logged_in: logged_in,
     user: user,
   };
 };

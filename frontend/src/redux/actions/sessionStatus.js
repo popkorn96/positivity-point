@@ -4,7 +4,7 @@ import { LOGGED_OUT } from "./types";
 
 export function sessionStatus() {
   return (dispatch) => {
-    fetch(`http://localhost:3001/logged_in`, {
+    fetch(`http://localhost:3001/status`, {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -13,15 +13,15 @@ export function sessionStatus() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        data.logged_in
-          ? dispatch({
+        data.logged_in ? 
+        dispatch({
               type: LOGGED_IN,
               payload: {
                 user: data.user.data.attributes,
-                isLoggedIn: data.logged_in,
+                logged_in: data.logged_in,
               },
             })
-          : dispatch({ type: LOGGED_OUT, payload: data });
+          : dispatch({ type: LOGGED_OUT, payload: data.logged_in });
       });
   };
 }

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
           render json: {
             status: :created,
             logged_in: true,
-            user: @user
+            user: UsersSerializer.new(@user)
           }
         else
           render json: { 
@@ -17,23 +17,23 @@ class SessionsController < ApplicationController
           }
         end
     end
-    def logged_in
-      if @current_user 
-        render json: {
-          logged_in: true,
-          user: @current_user
-        }
-      else 
-        render json: {
-          logged_in: false
-        }
-      end
-    end
+    # def logged_in
+    #   if @current_user 
+    #     render json: {
+    #       logged_in: true,
+    #       user: @current_user
+    #     }
+    #   else 
+    #     render json: {
+    #       logged_in: false
+    #     }
+    #   end
+    # end
     def is_logged_in?
       if !!session[:user_id] && current_user
           render json: {
               logged_in: true,
-              user: UserSerializer.new(current_user)
+              user: UsersSerializer.new(current_user)
           }
       else 
           render json: {
