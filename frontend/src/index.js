@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
+
+import goalReducer from './redux/reducers/goalReducer'
+import storyReducer from './redux/reducers/storyReducer'
+import postItReducer from './redux/reducers/postItReducer'
+import {usersReducer} from './redux/reducers/usersReducer'
 
 import { logger } from 'redux-logger';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import {rootReducer} from './redux/reducers/rootReducer'
+import { combineReducers } from "redux";
+
+const rootReducer = combineReducers({
+  goals: goalReducer,
+  stories: storyReducer,
+  postIts: postItReducer,
+  userState: usersReducer
+});
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -26,4 +37,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

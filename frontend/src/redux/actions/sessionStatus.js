@@ -1,8 +1,4 @@
-import { LOGGED_IN } from "./types";
-import { LOGGED_OUT } from "./types";
-// import axios from 'axios'
-
-export function sessionStatus() {
+export const sessionStatus = () => {
   return (dispatch) => {
     fetch(`http://localhost:3001/status`, {
       headers: {
@@ -13,15 +9,16 @@ export function sessionStatus() {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        data.logged_in ? 
-        dispatch({
-              type: LOGGED_IN,
+        if (data.logged_in === true) { 
+          dispatch({
+              type: "LOGGED_IN",
               payload: {
-                user: data.user.data.attributes, 
                 logged_in: data.logged_in,
-              },
-            })
-          : dispatch({ type: LOGGED_OUT, payload: data.logged_in });
-      });
+                user: data.user.data.attributes 
+          },
+            })}
+      else if (data.logged_in === false) {
+        dispatch({ type: "LOGGED_OUT", payload: data.logged_in });
+      }});
   };
 }

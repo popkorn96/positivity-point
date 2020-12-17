@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AccountItem(user) {
+export default function ProfileItem(user) {
     return (
         <div>
             {user.name} 
