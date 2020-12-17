@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  include CurrentUserConcern
 
     def create
         @user = User.find_by(email: session_params[:email])
@@ -31,17 +30,17 @@ class SessionsController < ApplicationController
       end
     end
     def is_logged_in?
-        if logged_in? && current_user
+      if !!session[:user_id] && current_user
           render json: {
-            logged_in: true,
-            user: current_user
+              logged_in: true,
+              user: UserSerializer.new(current_user)
           }
-        else
+      else 
           render json: {
-            logged_in: false,
-            message: 'no such user'
+              logged_in: false,
+              message: 'no such user'
           }
-        end
+      end
     end
     def logout
           logout!

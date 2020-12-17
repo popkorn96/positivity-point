@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AccountItem from '../items/AccountItem'
 import axios from 'axios';
-import {getUser} from '../redux/actions/getUser';
+// import {getUser} from '../redux/actions/getUser';
 import { connect } from 'react-redux';
 
 class Account extends Component {
@@ -44,12 +44,13 @@ class Account extends Component {
         )
     }
 }
-const mapStateToProps = state => {
-    return {
-        user: state.user
-    }
-}
-const mapDispatchToProps = dispatch => ({
-    getUser: dispatch(getUser())
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+// const mapStateToProps = state => {
+//     return {
+//         user: state.user
+//     }
+// }
+// const mapDispatchToProps = dispatch => ({
+//     getUser: dispatch(getUser())
+// })
+// export default connect(mapStateToProps, mapDispatchToProps)
+export default (Account);

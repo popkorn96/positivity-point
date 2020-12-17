@@ -21,7 +21,6 @@ const Styles = styled.div`
     right: 25%;
   }
   `;
-
 export const NavigationBar = () => (
 	<Styles>
     <Navbar expand="lg">

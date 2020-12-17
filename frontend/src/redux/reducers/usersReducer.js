@@ -1,8 +1,3 @@
-import { combineReducers } from "redux";
-
-import goalReducer from './goalReducer'
-import storyReducer from './storyReducer'
-import postItReducer from './postItReducer'
 import {
   LOGGED_OUT,
   LOGGED_IN,
@@ -21,13 +16,16 @@ import {
   // FETCH_TO_DELETE_RECIPE,
   // FETCH_CATEGORIES,
 } from "../actions/types";
- 
 
-export const usersReducer = (
-  state = { isLoggedIn: false, user: {}, emailError: "", passwordError: "" },
+export default function usersReducer(
+  state = { 
+    isLoggedIn: false, 
+    user: {}, 
+    emailError: "", 
+    passwordError: "" },
   action
-) => {
-  const { payload, emailEr, passwordEr, emailError, passwordError, usernameError, passwordConfirmationError, status,  type } = action;
+){
+  const { payload, emailEr, passwordEr, emailError, passwordError, passwordConfirmationError, status,  type } = action;
 
   switch (type) {
     case SIGNUP:
@@ -53,7 +51,6 @@ export const usersReducer = (
       return {
         status: status,
         emailError: emailError[0],
-        usernameError: usernameError,
         passwordError: passwordError,
         passwordConfirmationError: passwordConfirmationError,
       };
@@ -79,12 +76,3 @@ export const usersReducer = (
       return state;
   }
 };
-
-const rootReducer = combineReducers({
-  user: usersReducer,
-  goals: goalReducer,
-  stories: storyReducer,
-  postIts: postItReducer
-});
- 
-export default rootReducer;

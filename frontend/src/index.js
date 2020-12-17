@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createLogger } from 'redux-logger';
+import { logger } from 'redux-logger';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './redux/reducers/rootReducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const loggerMiddleware = createLogger();
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, loggerMiddleware)))
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)))
 
 ReactDOM.render(
   <React.StrictMode>
