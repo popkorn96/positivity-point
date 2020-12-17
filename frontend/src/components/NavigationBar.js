@@ -3,6 +3,12 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {logoutUser} from '../redux/actions/logoutUser'
+import SplitButton from 'react-bootstrap/SplitButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+
+
 
 const Styles = styled.div`
   .navbar { background-color: #00A0FC; }
@@ -42,9 +48,18 @@ const NavigationBar = (props) => {
             {props.logged_in ? (<Nav.Item><Nav.Link href="/stories">Stories</Nav.Link></Nav.Item>) :null }
             {props.logged_in ? (<Nav.Item><Nav.Link href="/post-its">Post-Its</Nav.Link></Nav.Item>) :null }
             {props.logged_in ? (<Nav.Item><Nav.Link href="/saved-stories">Saved Stories</Nav.Link></Nav.Item>) :null }
-            {props.logged_in ? (<Nav.Item><Nav.Link href="/profile">Profile</Nav.Link></Nav.Item>) :null }
-            {props.logged_in ? (<Nav.Item><Nav.Link href="/login" className="logout" onClick={(e)=> handleClick(e)}>Logout</Nav.Link></Nav.Item>) :null }
-            
+            {props.logged_in ? (
+                <Dropdown as={ButtonGroup}>
+                <Button variant="success" href="/account">Account</Button>
+
+                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/userStories">My Stories</Dropdown.Item>
+                  <Dropdown.Item href="/userPostits">My Post Its</Dropdown.Item>
+                  <Dropdown.Item href="/login" className="logout" onClick={(e)=> handleClick(e)}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+                </Dropdown>) :null }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -52,4 +67,3 @@ const NavigationBar = (props) => {
   </div>)
 };
 export default connect(null, { logoutUser })(NavigationBar);
-	

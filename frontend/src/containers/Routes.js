@@ -4,7 +4,7 @@ import Home from './Home';
 import Stories from '../components/Stories';
 import PostIts from '../components/PostIts';
 import SavedStories from '../components/SavedStories';
-import Profile from '../containers/Profile'
+import Account from '../containers/Account';
 
 function Routes() {
     return (
@@ -14,7 +14,7 @@ function Routes() {
                 <Route exact path="/stories" component={Stories}/>
                 <Route exact path="/post-its" component={PostIts}/>
                 <Route exact path="/saved-stories" component={SavedStories}/>
-                <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/account" component={Account}/>
             </div>
         </Switch>
     )

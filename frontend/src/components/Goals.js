@@ -19,10 +19,5 @@ class Goals extends Component {
         )
     }
 }
-const mapStateToProps = ({goals}) => {
-    return {
-        goals: goals.all
-    }
-}
 
 export default connect(({goals}) => ({ goals: goals.all }), {getGoals})(Goals)
