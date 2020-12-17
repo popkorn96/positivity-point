@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; 
 import { connect } from "react-redux";
 import { sessionStatus } from "../redux/actions/sessionStatus";
 import { NavigationBar } from "../components/NavigationBar";

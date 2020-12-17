@@ -17,7 +17,7 @@ export function sessionStatus() {
         dispatch({
               type: LOGGED_IN,
               payload: {
-                user: data.user.data.attributes,
+                user: data.user.data.attributes, 
                 logged_in: data.logged_in,
               },
             })

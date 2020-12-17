@@ -20,12 +20,10 @@ import {
 export const usersReducer = (
   state = { 
     logged_in: false, 
-    user: {}, 
-    emailError: "", 
-    passwordError: "" },
+    user: {}},
   action
 )=>{
-  const { payload, emailEr, passwordEr, emailError, passwordError, passwordConfirmationError, status,  type } = action;
+  const { payload, type } = action; 
 
   switch (type) {
     case SIGNUP:
@@ -41,19 +39,19 @@ export const usersReducer = (
         user: payload,
       };
 
-    case FAILED_LOGIN:
-      return {
-        emailEr: emailEr,
-        passwordEr: passwordEr,
-      };
+    // case FAILED_LOGIN:
+    //   return {
+    //     emailEr: emailEr,
+    //     passwordEr: passwordEr,
+    //   };
     
-    case FAILED_SIGNUP:
-      return {
-        status: status,
-        emailError: emailError[0],
-        passwordError: passwordError,
-        passwordConfirmationError: passwordConfirmationError,
-      };
+    // case FAILED_SIGNUP:
+    //   return {
+    //     status: status,
+    //     emailError: emailError[0],
+    //     passwordError: passwordError,
+    //     passwordConfirmationError: passwordConfirmationError,
+    //   };
     case LOGGED_IN:
       return {
         logged_in: true,
