@@ -17,7 +17,7 @@ class UserPostIts extends Component {
         var props = this.props
         return (
             <div>
-                <h1 class="text-center">{this.props.userState.name}'s Stories</h1>
+                <h1 class="text-center">{this.props.userState.name}'s Post Its</h1>
                 <Container>
                 <Row>
                 {this.props.postIts.filter(function(postIt, i){
@@ -36,7 +36,7 @@ class UserPostIts extends Component {
                         </Card.Footer>
                         </Card>
                         </Col>
-                    ))}.bind(this))
+                    ))}
                     </Row>
                 </Container>
             </div>

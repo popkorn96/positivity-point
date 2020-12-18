@@ -13,13 +13,13 @@ class UserStories extends Component {
         var props = this.props
         return (
             <div>
-                <h1 class="text-center">{this.props.userState.name}'s Post-Its</h1>
+                <h1 class="text-center">{this.props.userState.name}'s Stories</h1>
                 {this.props.stories.filter(function(story, i){
                     return story.user_id === props.userState.id
                 })
                 .map((story, i) =>
                     <UserStoryListItem key={story.id} story={story} user={props.userState}/>
-                )}.bind(this))
+                )}
                 
             </div>
         )

@@ -18,7 +18,7 @@ function Routes() {
                 <Route exact path="/saved-stories" component={SavedStories}/>
                 <Route exact path="/account" component={Account}/>
                 <Route exact path="/userStories" component={UserStories}/>
-                <Route exact path="/userPostIts" component={UserPostIts}/>
+                <Route exact path="/userPostits" component={UserPostIts}/>
             </div>
         </Switch>
     )

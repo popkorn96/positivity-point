@@ -21,7 +21,7 @@ class Goals extends Component {
                 })
                 .map((goal, i) =>
                     <GoalListItem key={goal.id} goal={goal} user={props.userState}/>
-                )}.bind(this))
+                )}
                 
             </div>
         )
