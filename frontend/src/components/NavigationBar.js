@@ -27,7 +27,7 @@ const Styles = styled.div`
   .button{
     background-color: #00A0FC;
     border-color: #00A0FC;
-    color: #515151;
+    color: #243c64;
     &:hover { color: white; }
   }
   .dropdown{

@@ -1,9 +1,10 @@
 import React from 'react'
+import ListGroup from 'react-bootstrap/ListGroup'
 
-export default function goalListItem({goal}) {
+export default function goalListItem({goals}) {
     return (
-       <li><div>
-           <i><p>{goal.content}</p></i>
-        </div></li>
+        <ListGroup variant="flush">{goals.map((goal) => 
+        <ListGroup.Item>{goal.content}</ListGroup.Item>)}
+        </ListGroup>
     )
 }
