@@ -3,7 +3,6 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {logoutUser} from '../redux/actions/logoutUser'
-import SplitButton from 'react-bootstrap/SplitButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
