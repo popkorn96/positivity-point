@@ -24,6 +24,32 @@ const Styles = styled.div`
   }
   .form-right {
   }
+  .button{
+    background-color: #00A0FC;
+    border-color: #00A0FC;
+    color: #515151;
+    &:hover { color: white; }
+  }
+  .dropdown{
+    background-color: #00A0FC;
+    border-color: #00A0FC;
+    &:hover { color: black; }
+  }
+  
+  .d-menu{
+    background-color: #00A0FC;
+    border-color: #00A0FC;
+  }
+  .items{
+    background-color: #00A0FC;
+    border-color: #00A0FC;
+    &:hover { color: white; }
+  }
+  .logout{
+    background-color: #00A0FC;
+    border-color: #00A0FC;
+    &:hover { color: white; }
+  }
   `;
 
 const NavigationBar = (props) => {
@@ -49,14 +75,14 @@ const NavigationBar = (props) => {
             {props.logged_in ? (<Nav.Item><Nav.Link href="/post-its">Post-Its</Nav.Link></Nav.Item>) :null }
             {props.logged_in ? (<Nav.Item><Nav.Link href="/saved-stories">Saved Stories</Nav.Link></Nav.Item>) :null }
             {props.logged_in ? (
-                <Dropdown as={ButtonGroup}>
-                <Button variant="success" href="/account">Account</Button>
+                <Dropdown as={ButtonGroup} class="dropdown">
+                <Button className="button" href="/account">Account</Button>
 
-                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Toggle className="dropdown" split id="dropdown-split-basic" />
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/userStories">My Stories</Dropdown.Item>
-                  <Dropdown.Item href="/userPostits">My Post Its</Dropdown.Item>
+                <Dropdown.Menu className="d-menu">
+                  <Dropdown.Item className="items" href="/userStories">My Stories</Dropdown.Item>
+                  <Dropdown.Item className="items" href="/userPostits">My Post Its</Dropdown.Item>
                   <Dropdown.Item href="/login" className="logout" onClick={(e)=> handleClick(e)}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>) :null }

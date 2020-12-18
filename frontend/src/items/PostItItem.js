@@ -1,9 +1,29 @@
 import React from 'react'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container'
 
-export default function PostItItem({postIt}) {
+export default function PostItItem({postIts}) {
     return (
         <div>
-            <i><p>{(postIt.user_id)} - {postIt.content}</p></i>
+            <Container>
+                <Row>
+                {postIts.map((postIt, i) => (
+                    <Col xs="4">
+                    <Card>
+                        <Card.Body>
+                            <Card.Text>
+                                {postIt.content}
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                    <small className="text-muted">Created at {postIt.created_at}</small>
+                    </Card.Footer>
+                    </Card>
+                    </Col>
+                ))}
+                </Row>
+            </Container>
         </div>
-    )
-}
+)}
