@@ -5,6 +5,8 @@ import Stories from '../components/Stories';
 import PostIts from '../components/PostIts';
 import SavedStories from '../components/SavedStories';
 import Account from '../containers/Account';
+import UserStories from '../components/UserStories';
+import UserPostIts from '../components/UserPostIts';
 
 function Routes() {
     return (
@@ -15,6 +17,8 @@ function Routes() {
                 <Route exact path="/post-its" component={PostIts}/>
                 <Route exact path="/saved-stories" component={SavedStories}/>
                 <Route exact path="/account" component={Account}/>
+                <Route exact path="/userStories" component={UserStories}/>
+                <Route exact path="/userPostIts" component={UserPostIts}/>
             </div>
         </Switch>
     )
