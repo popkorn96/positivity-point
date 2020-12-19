@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPostIts } from '../redux/actions/postItActions';
 import PostItItem from '../items/PostItItem';
+import Button from 'react-bootstrap/Button'
 
 class PostIts extends Component{
     componentDidMount() {
@@ -11,7 +12,7 @@ class PostIts extends Component{
         return (
             <div>
                 <h1 class="text-center">Post Its</h1>
-                <button type="button" class="btn btn-outline-primary btn-lg btn-block" >Create New Post It</button><hr></hr>
+                <Button variant="outline-primary" >Create New Post It</Button><hr></hr>
                 {/* {this.props.postIts.map((postIt, i) =>  */}
                 <PostItItem postIts={this.props.postIts} />)
             </div>

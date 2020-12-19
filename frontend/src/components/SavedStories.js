@@ -4,7 +4,7 @@ class SavedStories extends Component {
     render(){
     return (
         <div>
-            <h1 class="text-center">Saved Stories</h1>
+            <h1 >Saved Stories</h1>
         </div>
     )}
 }

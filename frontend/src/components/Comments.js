@@ -13,7 +13,7 @@ class Comments extends Component {
         var props = this.props
         return (
             <div>
-                <h1 class="text-center">Comments</h1>
+                <h1 className="text-center">Comments</h1>
                 <h1>{this.props.stories.name}</h1>
                 <button type="button" class="btn btn-outline-primary btn-lg btn-block" >Create New Comment</button><hr></hr>
                 <ul>{props.comments.filter(({story_id}) => props.stories.some(x => x.id === story_id)).map((comment, i) =>

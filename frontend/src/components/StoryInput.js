@@ -51,12 +51,12 @@ class StoryInput extends Component {
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Email:</Form.Label>
-                <Form.Control type="email" placeholder={this.props.userState.email} disabled/>
+                <Form.Control placeholder={this.props.userState.email} disabled/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Author:</Form.Label>
-                <Form.Control type="password" placeholder={this.props.userState.name} disabled/>
+                <Form.Control placeholder={this.props.userState.name} disabled/>
                 </Form.Group>
             </Form.Row>
             <Button type="submit" class="btn btn-outline-primary btn-lg btn-block">Create Story</Button><hr></hr>
