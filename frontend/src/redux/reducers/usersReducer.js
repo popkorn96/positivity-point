@@ -17,19 +17,19 @@ function usersReducer(state = {
         user: action.payload,
       };
 
-    // case FAILED_LOGIN:
-    //   return {
-    //     emailEr: emailEr,
-    //     passwordEr: passwordEr,
-    //   };
+    case "FAILED_LOGIN":
+      return {
+        emailEr: emailEr,
+        passwordEr: passwordEr,
+      };
     
-    // case FAILED_SIGNUP:
-    //   return {
-    //     status: status,
-    //     emailError: emailError[0],
-    //     passwordError: passwordError,
-    //     passwordConfirmationError: passwordConfirmationError,
-    //   };
+    case "FAILED_SIGNUP":
+      return {
+        status: status,
+        emailError: emailError[0],
+        passwordError: passwordError,
+        passwordConfirmationError: passwordConfirmationError,
+      };
     case "LOGGED_IN":
       return {
         logged_in: true,

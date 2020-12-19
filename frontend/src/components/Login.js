@@ -1,49 +1,83 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { loginUser } from "../actions/loginUser";
+import {withRouter} from "react-router-dom"
 
-export default class Login extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            email: "",
-            password: "",
-            loginErrors: ""
-        }
-    }
-    handleOnSubmit(event){
-        event.preventDefault();
-        const { email, password} = this.state;
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-        axios.post(`http://localhost:3001/sessions`, {
-            user: {
-                email: email,
-                password: password
-            }
-        }, { withCredentials:true })
-        .then(response => {
-            if (response.data.logged_in){
-                this.props.handleSuccessfulAuth(response.data)
-            }
-        })
-        .catch(error => {
-            console.log("login error", error)
-        });
-        console.log("form submitted")
-    }
-    handleOnChange(event){
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-    render() {
-        return (
-            <div>
-               <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                   <input type="text" name="email" placeholder="E-Mail" value={this.state.email} onChange={(event) => this.handleOnChange(event)}required/>
-                   <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={(event) => this.handleOnChange(event)}required/><hr></hr>
-                   <button class="btn btn-outline-primary btn-lg btn-block" type="submit">Login Up</button>
-               </form>
-            </div>
-        )
-    }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.loginUser(this.state);
+    this.setState({
+      email: "",
+      password: "",
+    });
+  }
+
+  render() {
+    const { email, password } = this.state;
+    return (
+      <div>
+        <h1>Log In</h1>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <div style={{ color: "red" }}>{this.props.emailEr}</div>
+            <input
+              placeholder="email"
+              type="text"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <div style={{ color: "red" }}>{this.props.passwordEr}</div>
+            <input
+              placeholder="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <input type="submit" value="Log In" />
+        </form>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = ({ usersReducer }) => {
+  return {
+    emailEr: usersReducer.emailEr,
+    passwordEr: usersReducer.passwordEr,
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loginUser: (formDAta) => dispatch(loginUser(formDAta, ownProps)),
+  };
+};
+
+const customConnectComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
+
+export default withRouter(customConnectComponent);

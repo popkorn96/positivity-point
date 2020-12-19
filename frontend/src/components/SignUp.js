@@ -1,59 +1,100 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+  
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signupUser } from "../actions/signupUser";
 
-export default class Signup extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            name: "",
-            dob: "",
-            email: "",
-            password: "",
-            signupErrors: ""
-        }
-    }
-    handleOnSubmit(event){
-        event.preventDefault();
-        const {
-            name, 
-            dob, 
-            email, 
-            password
-        } = this.state;
+class Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-        axios.post(`http://localhost:3001/signups`, {
-            user: {
-                name: name,
-                dob: dob,
-                email: email,
-                password: password
-            }
-        }, { withCredentials:true })
-        .then(response => {
-            if (response.data.status === "created"){
-                this.props.handleSuccessfulAuth(response.data)
-            }})
-        .catch(error => {
-            console.log("sign up error", error)
-        });
-        console.log("form submitted")
-    }
-    handleOnChange(event){
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-    render() {
-        return (
-            <div>
-               <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                   <input type="text" name="name" placeholder="Your Name" value={this.state.name} onChange={(event) => this.handleOnChange(event)} required/>
-                   <input type="date" name="dob" placeholder="Date Of Birth" value={this.state.dob} onChange={(event) => this.handleOnChange(event)}required/>
-                   <input type="text" name="email" placeholder="E-Mail" value={this.state.email} onChange={(event) => this.handleOnChange(event)}required/>
-                   <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={(event) => this.handleOnChange(event)}required/><hr></hr>
-                   <button class="btn btn-outline-primary btn-lg btn-block" type="submit">Sign Up</button>
-               </form>
-            </div>
-        )
-    }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.signupUser(this.state).then(() => {
+      if (this.props.status === 409) {
+        this.props.history.push("/signup");
+      } else {
+        this.props.history.push("/")
+      }
+    });
+    this.setState({
+      email: "",
+      password: "",
+    });
+  }
+
+  render() {
+    const { email, username, password, password_confirmation } = this.state;
+    return (
+      <div>
+        <h1>Sign Up</h1>
+
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <div style={{ color: "red" }}>{this.props.emailError}</div>
+            <input
+              placeholder="email"
+              type="text"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <div style={{ color: "red" }}>{this.props.usernameError}</div>
+            <input
+              placeholder="username"
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <div style={{ color: "red" }}>{this.props.passwordError}</div>
+            <input
+              placeholder="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <input type="submit" value="Create" />
+        </form>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = ({ usersReducer}) => {
+  const {
+    emailError,
+    usernameError,
+    passwordError,
+    status
+  } = usersReducer;
+
+  return {
+    emailError: emailError,
+    usernameError: usernameError,
+    passwordError: passwordError,
+    status: status
+  };
+};
+
+export default connect(mapStateToProps, { signupUser })(Signup);
