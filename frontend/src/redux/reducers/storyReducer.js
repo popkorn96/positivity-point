@@ -4,10 +4,13 @@ export default function storyReducer(state = {all: []}, action){
             return {...state, all: action.payload};
         
         case "FETCH_TO_CREATE_STORY":
+            
             return {
+                debugger
                 ...state,
-                all: state.stories.concat(action.payload)
-            };
+                all: [...state.all, action.payload]
+            }
+            debugger;
         case "FETCH_TO_DELETE_STORY":
             return {
                 ...state,

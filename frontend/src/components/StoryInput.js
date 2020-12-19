@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import {connect} from 'react-redux'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
 
 
 class StoryInput extends Component {
@@ -15,30 +12,33 @@ class StoryInput extends Component {
     this.props.sessionStatus();
     };
 
-  handleOnChange(event){
+  handleOnChange = event => {
+    const { value, name } = event.target;
     this.setState({
-      name: event.target.value,
+      [name]: value
     });
   }
-  handleOnSubmit(event) {
+  handleOnSubmit = event => {
     event.preventDefault();
-    this.props.addStory(this.state);
+    this.props.createStory({title: this.state.title, content: this.state.content, user_id: this.props.userState.id});
     this.setState({
-      name: '',
+      title: '',
+      content: ''
     });
   }
   render() {
     return(
-    <form>
+    <form onSubmit={this.handleOnSubmit}>
         <fieldset>
           <legend>Write A Story</legend>
           <div class="form-group">
-            <label class="col-form-label col-form-label-lg" for="inputLarge">Title:</label>
-            <input class="form-control form-control-lg" type="text" placeholder="Your Title Here" id="inputLarge"></input>
+            <label class="col-form-label col-form-label-lg"  for="inputLarge">Title:</label>
+            <input class="form-control form-control-lg" value={this.state.title} type="text" 
+            onChange={this.handleOnChange}  name="title"placeholder="Your Title Here" id="inputLarge" width="75"></input>
           </div>
           <div class="form-group">
             <label for="content">Content:</label>
-            <textarea class="form-control" id="content" rows="3"></textarea>
+            <textarea class="form-control" id="content" name="content" value={this.state.content} rows="3" size="50" onChange={this.handleOnChange}></textarea>
           </div>
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
@@ -52,6 +52,7 @@ class StoryInput extends Component {
             <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value={this.props.userState.name}></input>
             </div>
           </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
       </fieldset> 
     </form>
     )

@@ -1,42 +1,6 @@
 import React from 'react';
-import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
-import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {logoutUser} from '../redux/actions/logoutUser'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-
-
-
-const Styles = styled.div`
-  .button{
-    background-color: #00A0FC;
-    border-color: #00A0FC;
-    color: #243c64;
-    &:hover { color: white; }
-  }
-  .dropdown{
-    background-color: #00A0FC;
-    border-color: #00A0FC;
-    &:hover { color: black; }
-  }
-  
-  .d-menu{
-    background-color: #00A0FC;
-    border-color: #00A0FC;
-  }
-  .items{
-    background-color: #00A0FC;
-    border-color: #00A0FC;
-    &:hover { color: white; }
-  }
-  .logout{
-    background-color: #00A0FC;
-    border-color: #00A0FC;
-    &:hover { color: white; }
-  }
-  `;
 
 const NavigationBar = (props) => {
   const handleClick = () => {
@@ -84,7 +48,7 @@ const NavigationBar = (props) => {
           <a class="dropdown-item" href="/userStories">User Stories</a>
           <a class="dropdown-item" href="/userPostits">User Post Its</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout">Logout</a>
+          <a class="dropdown-item" onClick={handleClick} href="/logout">Logout</a>
         </div>
       </li>) : null }
     </ul>
