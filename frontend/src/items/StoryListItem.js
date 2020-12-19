@@ -30,7 +30,7 @@ class StoryListItem extends Component {
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                        <Card.Text><i><p>{props.story.content}</p></i></Card.Text>
+                        <Card.Text><i>{props.story.content}</i></Card.Text>
                     <Button variant="outline-info" onClick={this.handleComments}>Comments</Button>{'     '}
                     <Button variant="outline-primary" onClick={this.addComment}>Add Comment</Button>{' '}
                     <Button variant="outline-success" onClick={this.handleSave}>Save</Button>{' '}<br></br><br></br>
