@@ -29,40 +29,31 @@ class StoryInput extends Component {
   }
   render() {
     return(
-      <div>
-        <br/>
-        <Form onSubmit={(event) => this.handleOnSubmit(event)}>
-            <Form.Row>
-                <Form.Label column="lg" lg={2}>
-                    
-                </Form.Label>
-                    <Col>
-                        <Form.Control size="lg" type="text" placeholder="Your Story's Title: " />
-                    </Col>
-            </Form.Row>
-            <br />
-            <Form.Row>
-                <Form.Label column lg={2}>
-                </Form.Label>
-                    <Col>
-                        <Form.Control type="text" placeholder="Normal text" />
-                    </Col>
-            </Form.Row>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control placeholder={this.props.userState.email} disabled/>
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridName">
-                <Form.Label>Author:</Form.Label>
-                <Form.Control placeholder={this.props.userState.name} disabled/>
-                </Form.Group>
-            </Form.Row>
-            <Button type="submit" class="btn btn-outline-primary btn-lg btn-block">Create Story</Button><hr></hr>
-
-        </Form>
-      </div>
+    <form>
+        <fieldset>
+          <legend>Write A Story</legend>
+          <div class="form-group">
+            <label class="col-form-label col-form-label-lg" for="inputLarge">Title:</label>
+            <input class="form-control form-control-lg" type="text" placeholder="Your Title Here" id="inputLarge"></input>
+          </div>
+          <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea class="form-control" id="content" rows="3"></textarea>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-10">
+            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value={this.props.userState.email}></input>
+            </div>
+          </div> 
+          <div class="form-group row">
+            <label for="staticUser" class="col-sm-2 col-form-label">Author:</label>
+            <div class="col-sm-10">
+            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value={this.props.userState.name}></input>
+            </div>
+          </div>
+      </fieldset> 
+    </form>
     )
   }
 }

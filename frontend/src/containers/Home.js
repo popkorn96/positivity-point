@@ -5,6 +5,7 @@ class Home extends Component {
     render(){    
         return (
         <div>
+            <br/>
             <h1>Home</h1>
             <p>Positivity-Point is.. 
                 <strong>A Place Where You Can Reach A Positive Mindset & Achieve Your Goals</strong></p>

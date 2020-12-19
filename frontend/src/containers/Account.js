@@ -12,6 +12,7 @@ class Account extends Component {
     render() {
         return (
             <div>
+                <br/>
                 <h1 class="text-center">Account Information</h1><br></br><br></br>
                 <h1>{this.props.userState.name}</h1><hr></hr>
                 <h2>{this.props.userState.email}</h2>

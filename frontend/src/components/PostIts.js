@@ -11,6 +11,7 @@ class PostIts extends Component{
     render(){
         return (
             <div>
+                <br/>
                 <h1 class="text-center">Post Its</h1>
                 <Button variant="outline-primary" >Create New Post It</Button><hr></hr>
                 {/* {this.props.postIts.map((postIt, i) =>  */}

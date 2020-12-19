@@ -14,6 +14,7 @@ export default class Main extends Component{
   render (){
     return (
       <div>
+        <br/>
           <h1 class="text-center" >Sign Up or Login</h1>
           <h3>STATUS: <i>{this.props.loggedInStatus}</i></h3>
           <Signup handleSuccessfulAuth={this.handleSuccessfulAuth}/><hr></hr>
