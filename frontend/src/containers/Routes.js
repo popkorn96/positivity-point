@@ -7,6 +7,7 @@ import SavedStories from '../components/SavedStories';
 import Account from '../containers/Account';
 import UserStories from '../components/UserStories';
 import UserPostIts from '../components/UserPostIts';
+import Comments from '../components/Comments'
 
 function Routes() {
     return (
@@ -19,6 +20,7 @@ function Routes() {
                 <Route exact path="/account" component={Account}/>
                 <Route exact path="/userStories" component={UserStories}/>
                 <Route exact path="/userPostits" component={UserPostIts}/>
+                <Route exact path="/comments" component={Comments}/>
             </div>
         </Switch>
     )

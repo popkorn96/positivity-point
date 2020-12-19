@@ -1,23 +1,55 @@
-import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
+import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup';
+import CommentListItem from '../items/CommentListItem';
+import {getComments} from '../redux/actions/commentActions';
 
-export default function StoryListItem({story}) {
-    return (<ListGroup>
-        <Accordion>
-            <Card>
-                <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                {story.title}
-                </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="0">
-                <Card.Body><i><p>{story.content}</p></i></Card.Body>
-                </Accordion.Collapse>
-            </Card>
+// import Comments from '../components/Comments'
 
-        </Accordion>
-    </ListGroup>
-)}
+import React, { Component } from 'react'
+
+class StoryListItem extends Component {
+    // constructor(props){
+    //     super(props)
+    // }
+    componentDidMount() {
+        this.props.getComments();
+    };
+    render() {
+        var props = this.props
+        return (
+        <ListGroup>
+            <Accordion>
+                <Card>
+                    <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    {props.story.title}
+                    </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                        <Card.Text><i><p>{props.story.content}</p></i></Card.Text>
+                        
+                    <Button>Save</Button>
+                    {this.props.comments.filter(function(comment,i){
+                        return comment.story_id === props.story.id
+                    })
+                    .map((comment, i) =>
+                    <CommentListItem key={comment.id} comment={comment} story={props.story}/>
+                    )}
+                    </Card.Body>
+                    </Accordion.Collapse>
+                </Card>
+    
+            </Accordion>
+        </ListGroup>
+    )}
+}
+const mapStateToProps = state => {
+    return {
+        comments: state.comments.all,
+    };
+};
+export default connect(mapStateToProps, {getComments})(StoryListItem)

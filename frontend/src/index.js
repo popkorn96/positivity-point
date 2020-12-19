@@ -6,6 +6,7 @@ import App from './App';
 import goalReducer from './redux/reducers/goalReducer'
 import storyReducer from './redux/reducers/storyReducer'
 import postItReducer from './redux/reducers/postItReducer'
+import commentReducer from './redux/reducers/commentReducer'
 import {usersReducer} from './redux/reducers/usersReducer'
 
 import { logger } from 'redux-logger';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   goals: goalReducer,
   stories: storyReducer,
   postIts: postItReducer,
+  comments: commentReducer,
   userState: usersReducer
 });
 

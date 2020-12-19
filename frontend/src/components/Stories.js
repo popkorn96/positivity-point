@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getStories} from '../redux/actions/storyActions';
+import {getComments} from '../redux/actions/commentActions';
 import StoryListItem from '../items/StoryListItem';
 
 class Stories extends Component {
     componentDidMount() {
         this.props.getStories();
+        this.props.getComments();
     };
     render(){
         return (
@@ -19,10 +21,14 @@ class Stories extends Component {
         )
     }
 }
-const mapStateToProps = ({stories}) => {
+const mapStateToProps = state => {
     return {
-        stories: stories.all
+        stories: state.stories.all,
+        comments: state.comments.all
     }
 }
-
-export default connect(mapStateToProps, {getStories})(Stories)
+const mapDispatchToProps={
+    getStories,
+    getComments
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Stories)
