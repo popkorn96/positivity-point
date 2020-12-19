@@ -31,8 +31,9 @@ class StoryListItem extends Component {
                     <Accordion.Collapse eventKey="0">
                     <Card.Body>
                         <Card.Text><i><p>{props.story.content}</p></i></Card.Text>
-                        
-                    <Button>Save</Button>
+                    <Button variant="outline-info" onClick={this.handleComments}>Comments</Button>{'     '}
+                    <Button variant="outline-primary" onClick={this.addComment}>Add Comment</Button>{' '}
+                    <Button variant="outline-success" onClick={this.handleSave}>Save</Button>{' '}<br></br><br></br>
                     {this.props.comments.filter(function(comment,i){
                         return comment.story_id === props.story.id
                     })

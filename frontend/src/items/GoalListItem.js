@@ -7,7 +7,7 @@ export default function goalListItem({goal, user}) {
         <div>
         <ListGroup >
             <ListGroup.Item key={goal.user_id}><strong>{goal.title}</strong><br></br>{goal.content}</ListGroup.Item>
-            <Button type="button" class="btn btn-outline-danger" >Remove</Button>
+            <Button variant="outline-danger">Remove</Button>
         </ListGroup>
         </div>
     )

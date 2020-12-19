@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {getComments} from '../redux/actions/commentActions';
 import {getStories} from '../redux/actions/storyActions'
 import CommentListItem from '../items/CommentListItem';
-import StoryListItem from '../items/StoryListItem';
 
 class Comments extends Component {
     componentDidMount() {
