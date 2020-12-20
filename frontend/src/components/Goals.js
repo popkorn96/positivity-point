@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {getGoals} from '../redux/actions/goalActions';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import GoalListItem from '../items/GoalListItem';
+import GoalInput from './GoalInput';
+import {createGoal} from '../redux/actions/goalActions'
 
 class Goals extends Component {
     componentDidMount() {
@@ -13,6 +15,7 @@ class Goals extends Component {
         var props = this.props
         return (
             <div>
+                <GoalInput user={this.props.state.userState} createGoal={this.props.state.createGoal}/>
                 <h1>{this.props.userState.name}'s Goals</h1><br/>
                 {this.props.goals.filter(function(goal, i){
                     return goal.user_id === props.userState.id
@@ -33,6 +36,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps={
     sessionStatus,
-    getGoals
+    getGoals, 
+    createGoal
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Goals)
