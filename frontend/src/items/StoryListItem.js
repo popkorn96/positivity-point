@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import CommentListItem from '../items/CommentListItem';
 import {getComments} from '../redux/actions/commentActions';
+import CommentInput from '../components/CommentInput'
+import {createComment} from '../redux/actions/commentActions'
 
 // import Comments from '../components/Comments'
 
@@ -31,15 +33,27 @@ class StoryListItem extends Component {
                     <Accordion.Collapse eventKey="0">
                     <Card.Body>
                         <Card.Text><i>{props.story.content}</i></Card.Text>
-                    <Button variant="outline-info" onClick={this.handleComments}>Comments</Button>{'     '}
-                    <Button variant="outline-primary" onClick={this.addComment}>Add Comment</Button>{' '}
                     <Button variant="outline-success" onClick={this.handleSave}>Save</Button>{' '}<br></br><br></br>
-                    {this.props.comments.filter(function(comment,i){
-                        return comment.story_id === props.story.id
-                    })
-                    .map((comment, i) =>
-                    <CommentListItem key={comment.id} comment={comment} story={props.story}/>
-                    )}
+                    <Accordion>
+                        <Card>
+                            <Card.Header>
+                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            Comments
+                            </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                            <Card.Body>
+                            {this.props.comments.filter(function(comment,i){
+                                return comment.story_id === props.story.id
+                            })
+                            .map((comment, i) =>
+                            <CommentListItem key={comment.id} comment={comment} story={props.story}/>
+                            )}<br/>
+                            <CommentInput story={this.props.story} createComment={this.createComment}/>
+                            </Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                    </Accordion>
                     </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -53,4 +67,8 @@ const mapStateToProps = state => {
         comments: state.comments.all,
     };
 };
-export default connect(mapStateToProps, {getComments})(StoryListItem)
+const mapDispatchToProps={
+    createComment,
+    getComments
+}
+export default connect(mapStateToProps, mapDispatchToProps)(StoryListItem)
