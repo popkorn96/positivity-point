@@ -17,6 +17,6 @@ export const createPostIt = (formInput) => {
             body: JSON.stringify(formInput),  
         })
         .then(resp => resp.json())
-        .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt}))
+        .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt.attributes}))
     }
 }

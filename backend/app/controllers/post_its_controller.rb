@@ -5,7 +5,7 @@ class PostItsController < ApplicationController
         render json: PostitsSerializer.new(post_its).to_serialized_json
     end
     def create 
-        render json: Post_It.create(post_it_params)
+        render json: PostIt.create(post_it_params)
     end
     def show
         render json: PostitsSerializer.new(@post_it).to_serialized_json
@@ -23,7 +23,7 @@ class PostItsController < ApplicationController
     end
     private
     def post_it
-        @post_it = Post_It.find(params[:id])
+        @post_it = PostIt.find(params[:id])
     end
     def post_it_params
         params.permit(:user_id, :content)
