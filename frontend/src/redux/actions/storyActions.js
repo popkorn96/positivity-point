@@ -1,4 +1,3 @@
-
 export const getStories = () => {
     return dispatch => {
         fetch(`http://localhost:3001/stories`)
@@ -6,7 +5,7 @@ export const getStories = () => {
         .then(stories => dispatch({type: 'FETCH_STORY_SUCCESS', payload: stories}))
     }
 }
-export const createStory = (formInput) => {
+export function createStory(formInput){
     return dispatch => {
         fetch(`http://localhost:3001/stories`, {
             method: "POST",

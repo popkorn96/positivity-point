@@ -13,6 +13,7 @@ class UserStories extends Component {
         var props = this.props
         return (
             <div>
+                <br/>
                 <h1 class="text-center">{this.props.userState.name}'s Stories</h1>
                 {this.props.stories.filter(function(story, i){
                     return story.user_id === props.userState.id

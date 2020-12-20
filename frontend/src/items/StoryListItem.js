@@ -49,7 +49,7 @@ class StoryListItem extends Component {
                             .map((comment, i) =>
                             <CommentListItem key={comment.id} comment={comment} story={props.story}/>
                             )}<br/>
-                            <CommentInput story={this.props.story} createComment={this.createComment}/>
+                            <CommentInput story={this.props.story} createComment={this.props.createComment}/>
                             </Card.Body>
                             </Accordion.Collapse>
                         </Card>

@@ -26,6 +26,7 @@ class CommentInput extends Component {
         this.setState({
           content: ''
         });
+        window.location.reload()
       }
     render(){
     return (

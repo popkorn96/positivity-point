@@ -6,6 +6,7 @@ import {sessionStatus} from '../redux/actions/sessionStatus'
 import {connect} from 'react-redux'
 
 
+
 class StoryInput extends Component {
   state = {
     title: "",
@@ -28,6 +29,7 @@ class StoryInput extends Component {
       title: '',
       content: ''
     });
+    window.location.reload()
   }
   render() {
     return(

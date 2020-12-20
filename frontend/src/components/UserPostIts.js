@@ -17,6 +17,7 @@ class UserPostIts extends Component {
         var props = this.props
         return (
             <div>
+                <br/>
                 <h1 class="text-center">{this.props.userState.name}'s Post Its</h1>
                 <Container>
                 <Row>
@@ -32,7 +33,8 @@ class UserPostIts extends Component {
                                 </Card.Text>
                             </Card.Body>
                             <Card.Footer>
-                        <small className="text-muted">Created at {postIt.created_at}</small>
+                        <small className="text-muted">Created at {postIt.created_at}</small><br/><br/>
+                        <button type="button" class="btn btn-outline-danger">Delete</button>
                         </Card.Footer>
                         </Card>
                         </Col>

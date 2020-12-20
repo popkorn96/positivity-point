@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPostIts } from '../redux/actions/postItActions';
 import PostItItem from '../items/PostItItem';
-import Button from 'react-bootstrap/Button'
+import PostItInput from '../components/PostItInput';
 
 class PostIts extends Component{
     componentDidMount() {
@@ -13,16 +13,17 @@ class PostIts extends Component{
             <div>
                 <br/>
                 <h1 class="text-center">Post Its</h1>
-                <Button variant="outline-primary" >Create New Post It</Button><hr></hr>
+                <PostItInput />
                 {/* {this.props.postIts.map((postIt, i) =>  */}
                 <PostItItem postIts={this.props.postIts} />)
             </div>
         )
     }
 }
-const mapStateToProps = ({postIts}) => {
+const mapStateToProps = state => {
     return {
-        postIts: postIts.all
+        userState: state.userState.user,
+        postIts: state.postIts.all, 
     }
 }
 export default connect(mapStateToProps, { getPostIts })(PostIts)
