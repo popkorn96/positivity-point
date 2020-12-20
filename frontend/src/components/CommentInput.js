@@ -8,26 +8,26 @@ import {connect} from 'react-redux'
 
 class CommentInput extends Component {
     state = {
-        content: ""
+        content: ''
       }
 
     componentDidMount() {
-        this.props.sessionStatus();
-        };
+      this.props.sessionStatus();
+    };
     
-      handleOnChange = event => {
-        this.setState({
-          content: event.target.value
-        });
-      }
-      handleOnSubmit = event => {
-        event.preventDefault();
-        this.props.createComment({content: this.state.content, story_id: this.props.story.id, user_id: this.props.userState.id});
-        this.setState({
-          content: ''
-        });
-        window.location.reload()
-      }
+    handleOnChange = event => {
+      this.setState({
+        content: event.target.value
+      });
+    }
+    handleOnSubmit = event => {
+      event.preventDefault();
+      this.props.createComment({content: this.state.content, story_id: this.props.story.id, user_id: this.props.userState.id});
+      this.setState({
+        content: ''
+      });
+      window.location.reload()
+    }
     render(){
     return (
             <Accordion>

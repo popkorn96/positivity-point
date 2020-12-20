@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {getGoals} from '../redux/actions/goalActions';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import GoalListItem from '../items/GoalListItem';
-import Button from 'react-bootstrap/Button'
+
 class Goals extends Component {
     componentDidMount() {
         this.props.getGoals();
@@ -13,9 +13,7 @@ class Goals extends Component {
         var props = this.props
         return (
             <div>
-                <h1 class="text-center">Goals</h1>
-                <h1>{this.props.userState.name}</h1>
-                <Button variant="outline-primary">Create New Goal</Button><hr></hr>
+                <h1>{this.props.userState.name}'s Goals</h1><br/>
                 {this.props.goals.filter(function(goal, i){
                     return goal.user_id === props.userState.id
                 })

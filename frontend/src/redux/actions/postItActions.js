@@ -5,7 +5,7 @@ export const getPostIts = () => {
         .then(postIts => dispatch({type: 'FETCH_POST_IT_SUCCESS', payload: postIts}))
     }
 }
-export function createPostIt(formInput){
+export const createPostIt = (formInput) => {
     return dispatch => {
         fetch(`http://localhost:3001/post_its`, {
             method: "POST",
@@ -17,6 +17,6 @@ export function createPostIt(formInput){
             body: JSON.stringify(formInput),  
         })
         .then(resp => resp.json())
-        .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt.attributes}))
+        .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt}))
     }
 }

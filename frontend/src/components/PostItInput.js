@@ -2,31 +2,24 @@ import React, { Component } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
-import {sessionStatus} from '../redux/actions/sessionStatus'
-import {connect} from 'react-redux'
 
 class PostItInput extends Component {
-    state = {
-        content: ""
-      }
-      componentDidMount() {
-        this.props.sessionStatus();
-        };
-    
-      handleOnChange = event => {
-        const { value, name } = event.target;
-        this.setState({
-          [name]: value
-        });
-      }
-      handleOnSubmit = event => {
-        event.preventDefault();
-        this.props.createPostIt({content: this.state.content, user_id: this.props.userState.id});
-        this.setState({
-          content: ''
-        });
-        window.location.reload()
-      }
+  state = {
+      content: ""
+  }
+  handleOnChange = event => {
+    this.setState({
+      content: event.target.value
+    });
+  }
+  handleOnSubmit = event => {
+    event.preventDefault();
+    this.props.createPostIt({content: this.state.content, user_id: this.props.user.id});
+    this.setState({
+      content: ''
+    });
+    window.location.reload()
+  }
     render() {
         
         return (
@@ -55,12 +48,4 @@ class PostItInput extends Component {
         )
     }
 }
-const mapStateToProps = state => {
-    return {
-        userState: state.userState.user
-    };
-};
-const mapDispatchToProps={
-    sessionStatus
-};
-export default connect(mapStateToProps, mapDispatchToProps)(PostItInput)
+export default (PostItInput)
