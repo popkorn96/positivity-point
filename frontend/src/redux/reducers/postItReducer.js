@@ -7,6 +7,11 @@ export default function postItReducer(state = {all: []}, action){
             ...state,
             all: [...state.all, action.payload]
         } 
+        case "FETCH_TO_DELETE_POST_IT":
+            return {
+                ...state,
+                all: state.postIts.filter((postIt) => postIt.id !== action.payload.id),
+        };
         default: 
         return state;
     }

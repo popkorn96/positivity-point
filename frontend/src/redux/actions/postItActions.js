@@ -20,3 +20,19 @@ export const createPostIt = (formInput) => {
         .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt.attributes}))
     }
 }
+export function removePostIt(postIt) {
+    return (dispatch) => {
+      return fetch(`http://localhost:3001/post_its/${postIt.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(postIt),
+        credentials: "include",
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          dispatch({ type: "FETCH_TO_DELETE_STORY", payload: data.postIt });
+        });
+    };
+  }

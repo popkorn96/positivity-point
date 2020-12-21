@@ -8,7 +8,7 @@ import { removeStory } from '../redux/actions/storyActions'
 const UserStoryListItem = ({story, removeStory}) => {
     const handleDelete = () => {
         removeStory(story);
-        // window.location.reload()
+        window.location.reload()
       };
     return (
         <div>

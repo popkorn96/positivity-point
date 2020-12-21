@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {getPostIts} from '../redux/actions/postItActions';
+import {removePostIt} from '../redux/actions/postItActions';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -13,6 +14,10 @@ class UserPostIts extends Component {
         this.props.getPostIts();
         this.props.sessionStatus();
     };
+    handleDelete = () => {
+        // removePostIt(postIt);
+        // window.location.reload()
+    };
     render(){
         var props = this.props
         return (
@@ -23,7 +28,7 @@ class UserPostIts extends Component {
                 <Row>
                 {this.props.postIts.filter(function(postIt, i){
                     return postIt.user_id === props.userState.id
-                })
+                }).sort((a, b) => a.created_at < b.created_at ? 1 : -1)
                 .map((postIt, i) => (
                         <Col xs="4">
                         <Card>
@@ -34,7 +39,7 @@ class UserPostIts extends Component {
                             </Card.Body>
                             <Card.Footer>
                         <small className="text-muted">Created at {postIt.created_at}</small><br/><br/>
-                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                        <button type="button" class="btn btn-outline-danger" onClick={this.handleDelete(postIt)}>Delete</button>
                         </Card.Footer>
                         </Card>
                         </Col>
@@ -53,6 +58,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps={
     sessionStatus,
-    getPostIts
+    getPostIts,
+    removePostIt
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserPostIts)
