@@ -2,19 +2,13 @@ import React, { Component } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
-import {sessionStatus} from '../redux/actions/sessionStatus'
-import {connect} from 'react-redux'
 
 
 class GoalInput extends Component {
     state = {
-        title: '',
-        content: ''
-      }
-
-    componentDidMount() {
-      this.props.sessionStatus();
-    };
+        content: "",
+        title: ""
+    }
     
     handleOnChange = event => {
     const { value, name } = event.target;
@@ -25,13 +19,12 @@ class GoalInput extends Component {
     handleOnSubmit = event => {
       event.preventDefault();
       this.props.createGoal({
-          title: this.state.content,
-          content: this.state.content, 
-          story_id: this.props.story.id, 
-          user_id: this.props.userState.id});
+          title: this.state.title,
+          content: this.state.content,
+          user_id: this.props.user.id});
       this.setState({
-        title: '',
-        content: ''
+          content: "",
+          title: ""
       });
       window.location.reload()
     }
@@ -41,7 +34,7 @@ class GoalInput extends Component {
             <Card>
             <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            Add Comment
+            Add New Goal
             </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
@@ -66,12 +59,4 @@ class GoalInput extends Component {
       </Accordion>
     )}
 }
-const mapStateToProps = state => {
-    return {
-        userState: state.userState.user
-    };
-};
-const mapDispatchToProps={
-    sessionStatus
-};
-export default connect(mapStateToProps, mapDispatchToProps)(GoalInput)
+export default (GoalInput)

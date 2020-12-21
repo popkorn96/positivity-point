@@ -5,7 +5,7 @@ class PostItsController < ApplicationController
         render json: PostitsSerializer.new(post_its).to_serialized_json
     end
     def create 
-        render json: PostIt.create(post_it_params)
+        render json: PostitsSerializer.create(post_it_params).to_serialized_json
     end
     def show
         render json: PostitsSerializer.new(@post_it).to_serialized_json

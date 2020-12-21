@@ -15,7 +15,8 @@ class Goals extends Component {
         var props = this.props
         return (
             <div>
-                <GoalInput user={this.props.state.userState} createGoal={this.props.state.createGoal}/>
+                <GoalInput user={this.props.userState} createGoal={this.props.createGoal}/>
+                <br/>
                 <h1>{this.props.userState.name}'s Goals</h1><br/>
                 {this.props.goals.filter(function(goal, i){
                     return goal.user_id === props.userState.id

@@ -26,6 +26,6 @@ class GoalsController < ApplicationController
         @goal = Goal.find(params[:id])
     end
     def goal_params
-        params.permit(:user_id, :content)
+        params.permit(:user_id, :content, :title)
     end
 end

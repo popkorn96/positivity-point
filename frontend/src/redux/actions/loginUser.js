@@ -1,8 +1,6 @@
-import { LOGIN, FAILED_LOGIN } from "./types";
-
-export function loginUser(user, ownProps) {
+export function loginUser(user) {
   return (dispatch) => {
-    return fetch("http://localhost:3001/session", {
+    return fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,10 +14,9 @@ export function loginUser(user, ownProps) {
         data.status !== 500
           ? dispatch(
               {
-                type: LOGIN,
+                type: "LOGIN",
                 payload: data.user.data.attributes,
               },
-              ownProps.history.push("/")
             )
           : dispatch(
               {
@@ -27,7 +24,6 @@ export function loginUser(user, ownProps) {
                 emailEr: data.email_error,
                 passwordEr: data.passwordError,
               },
-              ownProps.history.push("/login")
             );
       });
   };

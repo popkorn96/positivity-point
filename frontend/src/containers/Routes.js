@@ -7,13 +7,15 @@ import SavedStories from '../components/SavedStories';
 import Account from '../containers/Account';
 import UserStories from '../components/UserStories';
 import UserPostIts from '../components/UserPostIts';
-import Comments from '../components/Comments'
+import Comments from '../components/Comments';
+import Main from '../containers/Main'
 
 function Routes() {
     return (
         <Switch>
             <div>
                 <Route exact path="/home" component={Home}/>
+                <Route exact path="/main" component={Main}/>
                 <Route exact path="/stories" component={Stories}/>
                 <Route exact path="/post-its" component={PostIts}/>
                 <Route exact path="/saved-stories" component={SavedStories}/>

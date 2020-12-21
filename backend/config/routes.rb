@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :sessions, :only => [:create]
   resources :signups, :only => [:create]
 
+  get :status, to: "sessions#is_logged_in?"
+  post :login, to: "sessions#create"
   delete :logout, to: "sessions#logout"
   
   resources :goals
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   resources :stories
   resources :users
 
-  get :status, to: "sessions#is_logged_in?"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
