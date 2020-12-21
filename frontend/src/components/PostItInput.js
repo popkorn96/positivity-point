@@ -16,7 +16,7 @@ class PostItInput extends Component {
     event.preventDefault();
     this.props.createPostIt({content: this.state.content, user_id: this.props.user.id});
     this.setState({
-      content: ''
+      content: ""
     });
     window.location.reload()
   }

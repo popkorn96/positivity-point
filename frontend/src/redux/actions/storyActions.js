@@ -21,3 +21,19 @@ export const createStory = (formInput) => {
     }
 }
 
+export function removeStory(story) {
+    return (dispatch) => {
+      return fetch(`http://localhost:3001/stories/${story.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(story),
+        credentials: "include",
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          dispatch({ type: "FETCH_TO_DELETE_STORY", payload: data.story });
+        });
+    };
+  }

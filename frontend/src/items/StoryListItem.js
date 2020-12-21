@@ -16,9 +16,16 @@ class StoryListItem extends Component {
     // constructor(props){
     //     super(props)
     // }
+    state = {
+        
+    }
     componentDidMount() {
         this.props.getComments();
     };
+    handleSave = event => {
+        event.pregentDefault();
+
+    }
     render() {
         var props = this.props
         return (

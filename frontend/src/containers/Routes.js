@@ -14,8 +14,8 @@ function Routes() {
     return (
         <Switch>
             <div>
-                <Route exact path="/home" component={Home}/>
-                <Route exact path="/main" component={Main}/>
+                <Route exact path="/" component={Home}/>
+                {/* <Route exact path="/main" component={Main}/> */}
                 <Route exact path="/stories" component={Stories}/>
                 <Route exact path="/post-its" component={PostIts}/>
                 <Route exact path="/saved-stories" component={SavedStories}/>

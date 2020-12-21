@@ -20,7 +20,7 @@ export function loginUser(user) {
             )
           : dispatch(
               {
-                type: FAILED_LOGIN,
+                type: "FAILED_LOGIN",
                 emailEr: data.email_error,
                 passwordEr: data.passwordError,
               },

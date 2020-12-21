@@ -9,7 +9,7 @@ export default function PostItItem({postIts}) {
         <div>
             <Container>
                 <Row>
-                {postIts.map((postIt, i) => (
+                {postIts.sort((a, b) => a.created_at < b.created_at ? 1 : -1).map((postIt, i) => (
                     <Col xs="4">
                     <Card>
                         <Card.Body>
