@@ -24,7 +24,7 @@ function Routes() {
                 <Route exact path="/userStories" component={UserStories}/>
                 <Route exact path="/userPostits" component={UserPostIts}/>
                 <Route exact path="/comments" component={Comments}/>
-                <Route exact path="/login" component={Login}/>
+                <Route exact path="/login" render={(routerProps) => <Login history={routerProps.history} />}></Route>
             </div>
         </Switch>
     )

@@ -62,7 +62,7 @@ class StoryInput extends Component {
                     <div class="form-group row">
                       <label for="staticUser" class="col-sm-2 col-form-label">Author:</label>
                       <div class="col-sm-10">
-                      <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value={this.props.userState.name}></input>
+                      <input type="text" readonly="" class="form-control-plaintext" id="staticAuthor" value={this.props.userState.name}></input>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -2,9 +2,8 @@
 function usersReducer(state = {
     logged_in: false, 
     user: {},
-    emailError: "", 
-    passwordError: "" }, action){
-  const { payload, emailEr, passwordEr, emailError, passwordError, passwordConfirmationError, status,  type } = action;
+    loginErr: "" }, action){
+  const { payload, loginErr, status,  type } = action;
   switch (type) {
     case "SIGNUP":
       return {
@@ -22,16 +21,13 @@ function usersReducer(state = {
 
     case "FAILED_LOGIN":
       return {
-        emailEr: emailEr,
-        passwordEr: passwordEr,
+        loginErr: loginErr
       };
     
     case "FAILED_SIGNUP":
       return {
         status: status,
-        emailError: emailError[0],
-        passwordError: passwordError,
-        passwordConfirmationError: passwordConfirmationError,
+        loginErr
       };
     case "LOGGED_IN":
       return {
