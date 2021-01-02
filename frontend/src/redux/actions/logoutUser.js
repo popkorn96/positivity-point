@@ -1,6 +1,6 @@
-export function logoutUser(userId) {
+export function logoutUser() {
   return (dispatch) => {
-    fetch(`http://localhost:3001/${userId}`, {
+    fetch(`http://localhost:3001/logout/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

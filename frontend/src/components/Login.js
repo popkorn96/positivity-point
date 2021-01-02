@@ -27,6 +27,7 @@ class Login extends Component {
         event.preventDefault();
         console.log('UserEmail: ' + this.state.email)
         const userData = { email: this.state.email, password: this.state.password }
+        
         this.props.loginUser(userData)
         // const requestOptions = {
         //     method: 'POST',
