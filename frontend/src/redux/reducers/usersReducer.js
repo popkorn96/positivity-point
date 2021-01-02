@@ -14,6 +14,7 @@ function usersReducer(state = {
       };
 
     case "LOGIN":
+      console.log('login', payload.user)
       return {
         logged_in: true,
         user: payload,

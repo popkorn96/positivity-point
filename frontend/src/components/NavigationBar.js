@@ -10,7 +10,11 @@ const NavigationBar = (props) => {
   }
 }; return (
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">Positivity Point - Home</a>
+  {props.logged_in ? <a class="navbar-brand" href="/">Positivity Point - Home</a> :(<li class="nav-item active">
+        <a class="navbar-brand" href="/main">Positivity Point
+          <span class="sr-only">(current)</span>
+        </a>
+        </li>)}
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

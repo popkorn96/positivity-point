@@ -30,13 +30,18 @@
 ul {
   list-style: none;
   padding-left: 0;
-}​
+}
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.logo {
+  height: 200px;
+  width: 200px;
 }

@@ -6,6 +6,12 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     module: {
+        loaders: [
+            {
+              test: /\.(png|jpg)$/,
+              loader: 'url?limit=25000'
+            }
+          ],
         rules: [
             {
                 test: /\.jsx?$/,

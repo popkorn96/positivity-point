@@ -9,13 +9,14 @@ import UserStories from '../components/UserStories';
 import UserPostIts from '../components/UserPostIts';
 import Comments from '../components/Comments';
 import Main from '../containers/Main'
+import Login from '../components/Login'
 
 function Routes() {
     return (
         <Switch>
             <div>
                 <Route exact path="/" component={Home}/>
-                {/* <Route exact path="/main" component={Main}/> */}
+                <Route exact path="/main" component={Main}/>
                 <Route exact path="/stories" component={Stories}/>
                 <Route exact path="/post-its" component={PostIts}/>
                 <Route exact path="/saved-stories" component={SavedStories}/>
@@ -23,6 +24,7 @@ function Routes() {
                 <Route exact path="/userStories" component={UserStories}/>
                 <Route exact path="/userPostits" component={UserPostIts}/>
                 <Route exact path="/comments" component={Comments}/>
+                <Route exact path="/login" component={Login}/>
             </div>
         </Switch>
     )

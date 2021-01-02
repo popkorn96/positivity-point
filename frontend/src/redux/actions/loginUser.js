@@ -4,7 +4,7 @@ export function loginUser(user) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
       credentials: "include",
       body: JSON.stringify(user),
@@ -15,8 +15,8 @@ export function loginUser(user) {
           ? dispatch(
               {
                 type: "LOGIN",
-                payload: data.user.data.attributes,
-              },
+                payload: data.user.data.attributes 
+              }
             )
           : dispatch(
               {
