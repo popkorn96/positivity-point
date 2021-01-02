@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {logoutUser} from '../redux/actions/logoutUser'
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const NavigationBar = (props) => {
   const handleClick = () => {
@@ -46,15 +49,20 @@ const NavigationBar = (props) => {
           <span class="sr-only">(current)</span>
         </a>
       </li>) : null }
-    {props.logged_in ? (<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/account" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/userStories">User Stories</a>
-          <a class="dropdown-item" href="/userPostits">User Post Its</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" onClick={handleClick} href="/logout">Logout</a>
-        </div>
-      </li>) : null }
+    {props.logged_in ? (<li>
+      <Dropdown as={ButtonGroup}>
+        <Button href="/account" variant="success">Account</Button>
+
+        <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+
+        <Dropdown.Menu>
+          <Dropdown.Item href="/userStories">User Stories</Dropdown.Item>
+          <Dropdown.Item href="/userPostIts">User Post Its</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </li>) : null }
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search"></input>
