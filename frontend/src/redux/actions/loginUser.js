@@ -15,7 +15,7 @@ export function loginUser(userData, ownProps) {
           dispatch({
             type: "LOGIN",
             payload: data.user.data.attributes 
-          }
+          }, ownProps.history.push("/")
           )}
           else if (data.status !== 500) {
             dispatch({

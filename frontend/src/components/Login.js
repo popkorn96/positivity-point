@@ -38,7 +38,7 @@ class Login extends Component {
         //         .then((resp) => resp.json())
         //         .catch(error => console.error('Error', error))
         //         .then((data) => console.log('Success', data))
-        this.props.history.push("/")
+        // this.props.history.push("/")
         this.setState({
             email: "",
             password: ""
@@ -64,7 +64,9 @@ class Login extends Component {
         </div>
     );}
 }
-const mapDispatchToProps={
-    loginUser
-};
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      loginUser: (formDAta) => dispatch(loginUser(formDAta, ownProps)),
+    };
+  };
 export default connect(null, mapDispatchToProps)(Login)

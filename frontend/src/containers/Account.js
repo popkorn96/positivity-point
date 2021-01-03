@@ -1,15 +1,28 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {sessionStatus} from '../redux/actions/sessionStatus'
+import {logoutUser} from '../redux/actions/logoutUser'
+
 
 
 
 class Account extends Component {
+    state = { toLogout: false }
     componentDidMount() {
         this.props.sessionStatus();
     };
+    handleLogout = event => {
+        this.setState(() => ({ toLogout: true }))
+        this.props.logoutUser();
+
+    }
+
     render() {
+        if (this.state.toLogout) {
+            return <Redirect to='/login' />
+          }
         return (
             <div>
                 <br/>
@@ -20,7 +33,7 @@ class Account extends Component {
                 <Button variant="outline-primary" href="/userPostits">See All <strong>User</strong> Post Its</Button><hr></hr>
                 <Button variant="outline-primary" href="/userStories">See All <strong>User</strong> Stories</Button><hr></hr>
                 <Button variant="outline-primary" >Edit Information</Button><hr></hr>
-                <Button variant="outline-danger" >Logout</Button><hr></hr>
+                <Button variant="outline-danger" onClick={this.handleLogout}>Logout</Button><hr></hr>
             </div>
         )
     }
@@ -31,6 +44,7 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps={
-    sessionStatus
+    sessionStatus,
+    logoutUser
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Account)
