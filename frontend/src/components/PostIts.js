@@ -14,6 +14,9 @@ class PostIts extends Component{
             <div>
                 <br/>
                 <h1 class="text-center">Post Its</h1>
+                <i><p>In an effort to ignite positivity, this page is for Positive Post-Its <br/>
+                in which anyone on this app can write things they are grateful for, notes to encourage others, 
+                quotes of mindfulness and more!</p></i>
                 <PostItInput createPostIt={this.props.createPostIt} user={this.props.userState}/>
                 <PostItItem postIts={this.props.postIts} />
             </div>

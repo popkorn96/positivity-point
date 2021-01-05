@@ -42,6 +42,9 @@ class StoryInput extends Component {
             </Card.Header>
             <Accordion.Collapse eventKey="0">
             <Card.Body>
+            <h1>☺</h1>
+            <i>Be authentic and use authentic language.  <br/>
+            It is encouraged to mention the difficulties and challenges you had to overcome to achieve your goals </i><hr/>
                 <form onSubmit={this.handleOnSubmit}>
                   <fieldset>
                     <div class="form-group">
