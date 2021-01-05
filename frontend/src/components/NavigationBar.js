@@ -49,9 +49,10 @@ const NavigationBar = (props) => {
           <span class="sr-only">(current)</span>
         </a>
       </li>) : null }
-    {props.logged_in ? (<li>
+    </ul>
+    {props.logged_in ? (
       <Dropdown as={ButtonGroup}>
-        <Button href="/account" variant="success">Account</Button>
+        <Button href="/account" className="float-right" variant="success">Account</Button>
 
         <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
 
@@ -62,12 +63,7 @@ const NavigationBar = (props) => {
           <Dropdown.Item href="/login" onClick={(e) => handleClick(e)}>Logout</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-    </li>) : null }
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search"></input>
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    ) : null }
   </div>
 </nav>)
   

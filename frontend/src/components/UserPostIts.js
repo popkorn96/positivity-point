@@ -14,7 +14,9 @@ class UserPostIts extends Component {
         this.props.getPostIts();
         this.props.sessionStatus();
     };
-    handleDelete = () => {
+    handleDelete = (event) => {
+        // let todos = this.state.todos.slice();
+        // todos = todos.filter(todo => todo.id !== id);
         // removePostIt(postIt);
         // window.location.reload()
     };
@@ -39,7 +41,7 @@ class UserPostIts extends Component {
                             </Card.Body>
                             <Card.Footer>
                         <small className="text-muted">Created at {postIt.created_at}</small><br/><br/>
-                        <button type="button" class="btn btn-outline-danger" onClick={this.handleDelete(postIt)}>Delete</button>
+                        <button type="button" class="btn btn-outline-danger" onClick={this.handleDelete(postIt.id)}>Delete</button>
                         </Card.Footer>
                         </Card>
                         </Col>
