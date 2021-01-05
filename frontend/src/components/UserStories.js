@@ -17,7 +17,7 @@ class UserStories extends Component {
                 <h1 class="text-center">{this.props.userState.name}'s Stories</h1><br/>
                 {this.props.stories.filter(function(story, i){
                     return story.user_id === props.userState.id
-                })
+                }).sort((a, b) => a.created_at < b.created_at ? 1 : -1)
                 .map((story, i) => (
                     <UserStoryListItem key={story.id} story={story} user={props.userState}/>
                 ))}

@@ -21,7 +21,7 @@ export const createStory = (formInput) => {
     }
 }
 
-export function removeStory(story) {
+export function deleteStory(story) {
     return (dispatch) => {
       return fetch(`http://localhost:3001/stories/${story.id}`, {
         method: "DELETE",

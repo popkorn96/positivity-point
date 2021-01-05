@@ -20,7 +20,7 @@ export const createPostIt = (formInput) => {
         .then(postIt => dispatch({type: "FETCH_TO_CREATE_POST_IT", payload: postIt.attributes}))
     }
 }
-export function removePostIt(postIt) {
+export function deletePostIt(postIt) {
     return (dispatch) => {
       return fetch(`http://localhost:3001/post_its/${postIt.id}`, {
         method: "DELETE",

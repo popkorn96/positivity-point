@@ -13,9 +13,6 @@ import {createComment} from '../redux/actions/commentActions'
 import React, { Component } from 'react'
 
 class StoryListItem extends Component {
-    // constructor(props){
-    //     super(props)
-    // }
     state = {
         
     }
@@ -23,7 +20,7 @@ class StoryListItem extends Component {
         this.props.getComments();
     };
     handleSave = event => {
-        event.pregentDefault();
+        event.preventDefault();
 
     }
     render() {
