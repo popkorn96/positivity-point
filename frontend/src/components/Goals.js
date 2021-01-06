@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getGoals} from '../redux/actions/goalActions';
+import {deleteGoal} from '../redux/actions/goalActions';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import GoalListItem from '../items/GoalListItem';
 import GoalInput from './GoalInput';
@@ -22,7 +23,7 @@ class Goals extends Component {
                     return goal.user_id === props.userState.id
                 }).sort((a, b) => a.created_at < b.created_at ? 1 : -1)
                 .map((goal, i) =>
-                    <GoalListItem key={goal.id} goal={goal} user={props.userState}/>
+                    <GoalListItem key={goal.id} goal={goal} user={props.userState} deleteGoal={this.props.deleteGoal}/>
                 )}
                 
             </div>
@@ -38,6 +39,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps={
     sessionStatus,
     getGoals, 
-    createGoal
+    createGoal, 
+    deleteGoal
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Goals)

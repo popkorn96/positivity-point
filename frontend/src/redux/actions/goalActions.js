@@ -20,3 +20,19 @@ export const createGoal = (formInput) => {
         .then(goal => dispatch({type: "FETCH_TO_CREATE_GOAL", payload: goal.attributes}))
     }
 }
+export function deleteGoal(goal) {
+    return (dispatch) => {
+      return fetch(`http://localhost:3001/goals/${goal.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(goal),
+        credentials: "include",
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          dispatch({ type: "FETCH_TO_DELETE_GOAL", payload: data.goal });
+        });
+    };
+  }
