@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import {getPostIts} from '../redux/actions/postItActions';
+import {deletePostIt} from '../redux/actions/postItActions';
 
 
 // import Card from 'react-bootstrap/Card';
@@ -21,7 +22,7 @@ class UserPostIts extends Component {
         return (
             <div>
                 <br/>
-                <h1 class="text-center">{this.props.userState.name}'s Post Its</h1>
+                <h1 class="text-center">{this.props.userState.name}'s Post Its</h1><br/>
                 <Container>
                     <Row>
                         {this.props.postIts.filter(function(postIt, i){
@@ -44,6 +45,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps= {
     sessionStatus,
-    getPostIts
+    getPostIts, 
+    deletePostIt
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserPostIts)

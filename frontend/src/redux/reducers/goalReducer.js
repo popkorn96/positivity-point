@@ -8,10 +8,10 @@ export default function goalReducer(state = {all: []}, action){
                 all: [...state.all, action.payload]
             } 
         case "FETCH_TO_DELETE_GOAL":
-        return {
-            ...state,
-            all: state.goals.filter((goal) => goal.id !== action.payload.id),
-        };
+            return {
+                ...state,
+                all: state.goals.filter((goal) => goal.id !== action.payload.id),
+            };
         default: 
         return state;
     }

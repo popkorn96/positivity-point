@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 export default class UserPostIt extends Component {
     handleOnClick() {
-        this.props.deletePostIt(this.props.postIt.id);
+        this.props.deletePostIt(this.props.postIt);
       }
     render() {
         const {postIt} = this.props

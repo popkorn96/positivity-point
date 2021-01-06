@@ -60,8 +60,9 @@ class Home extends Component {
         <div>
             <br/>
                 <Container>
-                    <Row>
-                        <Col><h1>Poisitivity Point - Home</h1><hr/>
+                <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+                        <Tab eventKey="home" title="Home">
+                        <Col><br/><h1>Poisitivity Point - Home</h1><hr/>
                         <p><i><strong>Positivity Point Is A Place Where You Can Reach A Positive Mindset & Achieve Your Goals</strong></i></p>
                         <p>Surround yourself with positive and successful people. <br/>
                         The influence people have over our own personal energy is amazing. <br/><br/>
@@ -70,14 +71,11 @@ class Home extends Component {
                         When you have people around you who inspire you, believe in you and want you to succeed, <br/>
                         there’s no room for doubts and even when they creep up, <br/>
                         they’re quickly swept away. </p><hr/></Col>
-                        
-                    </Row>
-                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                        </Tab>
                         <Tab eventKey="goals" title="Goals"><br/>
                             <OverlayTrigger trigger="click" placement="right" overlay={popover1}>
                             <Button variant="outline-success">Set Goals That Motivate You</Button>
                             </OverlayTrigger>
-                            
                             <OverlayTrigger trigger="click" placement="right" overlay={popover2}>
                             <Button variant="outline-success">Set SMART Goals</Button>
                             </OverlayTrigger>
@@ -86,13 +84,13 @@ class Home extends Component {
                             </OverlayTrigger>
                             <OverlayTrigger trigger="click" placement="right" overlay={popover4}>
                             <Button variant="outline-success">Stick With It!</Button>
-                            </OverlayTrigger><br/><br/>
+                            </OverlayTrigger><br/>
                             <Goals />
                         </Tab>
                         <Tab eventKey="stories" title="Stories">
                             <UserStories />
                         </Tab>
-                        <Tab eventKey="postIts" title="PostIts">
+                        <Tab eventKey="postIts" title="Post Its">
                             <UserPostIts />
                         </Tab>
                     </Tabs>

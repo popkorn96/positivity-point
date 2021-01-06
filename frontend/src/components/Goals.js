@@ -16,9 +16,9 @@ class Goals extends Component {
         var props = this.props
         return (
             <div>
-                <GoalInput user={this.props.userState} createGoal={this.props.createGoal}/>
                 <br/>
                 <h1>{this.props.userState.name}'s Goals</h1><br/>
+                <GoalInput user={this.props.userState} createGoal={this.props.createGoal}/>
                 {this.props.goals.filter(function(goal, i){
                     return goal.user_id === props.userState.id
                 }).sort((a, b) => a.created_at < b.created_at ? 1 : -1)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getStories} from '../redux/actions/storyActions';
+import {deleteStory} from '../redux/actions/storyActions';
 import {sessionStatus} from '../redux/actions/sessionStatus'
 import UserStoryListItem from '../items/UserStoryListItem'
 
@@ -19,7 +20,7 @@ class UserStories extends Component {
                     return story.user_id === props.userState.id
                 }).sort((a, b) => a.created_at < b.created_at ? 1 : -1)
                 .map((story, i) => (
-                    <UserStoryListItem key={story.id} story={story} user={props.userState}/>
+                    <UserStoryListItem key={story.id} story={story} user={props.userState} deleteStory={props.deleteStory}/>
                 ))}
                 
             </div>
@@ -34,7 +35,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps={
     sessionStatus,
-    getStories
+    getStories, 
+    deleteStory
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserStories)

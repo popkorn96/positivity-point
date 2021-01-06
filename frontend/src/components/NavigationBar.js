@@ -13,7 +13,7 @@ const NavigationBar = (props) => {
   }
 }; return (
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  {props.logged_in ? <a class="navbar-brand" href="/">Positivity Point - Home</a> : (<li class="nav-item active">
+  {props.logged_in ? <a class="navbar-brand" href="/">Positivity Point</a> : (<li class="nav-item active">
         <a class="navbar-brand" href="/main">Positivity Point
           <span class="sr-only">(current)</span>
         </a>
