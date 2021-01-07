@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import Goals from '../components/Goals'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Button from 'react-bootstrap/Button'
-import Popover from 'react-bootstrap/Popover'
-import UserStories from '../components/UserStories'
-import UserPostIts from '../components/UserPostIts'
+import React, { Component } from 'react';
+import Popover from 'react-bootstrap/Popover';
+import UserStories from '../components/UserStories';
+import UserPostIts from '../components/UserPostIts';
+import Goals from '../components/Goals';
+
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Button from 'react-bootstrap/Button';
 
 class Home extends Component {
     render(){  

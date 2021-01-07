@@ -6,7 +6,8 @@ import Button from 'react-bootstrap/Button'
 export default class UserPostIt extends Component {
     handleOnClick() {
         this.props.deletePostIt(this.props.postIt);
-      }
+        window.location.reload();
+    }
     render() {
         const {postIt} = this.props
         return (
@@ -23,6 +24,5 @@ export default class UserPostIt extends Component {
                 </Card.Footer>
                 </Card>
                 </Col>
-        )
-    }
+            )}
 }

@@ -4,9 +4,6 @@ import {sessionStatus} from '../redux/actions/sessionStatus'
 import {getPostIts} from '../redux/actions/postItActions';
 import {deletePostIt} from '../redux/actions/postItActions';
 
-
-// import Card from 'react-bootstrap/Card';
-// import Col from 'react-bootstrap/Col';
 import UserPostIt from './UserPostIt';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container'
