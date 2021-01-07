@@ -36,4 +36,28 @@ export function deleteStory(story) {
           dispatch({ type: "FETCH_TO_DELETE_STORY", payload: data.story });
         });
     };
-  }
+}
+export function saveStory(story) {
+    return (dispatch) => {
+      return fetch(`http://localhost:3001/stories/${story.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(story),
+        credentials: "include",
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          if (data.saved === true) { 
+            dispatch({
+                type: "FETCH_TO_SAVE",
+                payload: {
+                  story: data.story.data.attributes 
+            },
+              })}
+        else if (data.saved === false) {
+          dispatch({ type: "FETCH_TO_UNSAVE", payload: data.saved });
+        }});
+    };
+}

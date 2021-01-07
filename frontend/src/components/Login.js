@@ -29,21 +29,10 @@ class Login extends Component {
         const userData = { email: this.state.email, password: this.state.password }
         
         this.props.loginUser(userData)
-        // const requestOptions = {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(userData)
-        // };
-        // fetch(`http://localhost:3001/login`, requestOptions)
-        //         .then((resp) => resp.json())
-        //         .catch(error => console.error('Error', error))
-        //         .then((data) => console.log('Success', data))
-        // this.props.history.push("/")
         this.setState({
             email: "",
             password: ""
           });
-        // window.location.reload() 
         ;}
 
     render() {
@@ -59,7 +48,7 @@ class Login extends Component {
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" onChange={this.changePassword} value={this.state.password}/>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-outline-primary btn-lg btn-block" type="submit">Login</button>
             </form>
         </div>
     );}

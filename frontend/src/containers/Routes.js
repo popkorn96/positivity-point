@@ -11,6 +11,7 @@ import UserItems from '../containers/UserItems';
 import Comments from '../components/Comments';
 import Main from '../containers/Main'
 import Login from '../components/Login'
+import Signup from '../components/auth/Signup'
 
 
 function Routes() {
@@ -28,6 +29,7 @@ function Routes() {
                 <Route exact path="/userPosts" component={UserItems}/>
                 <Route exact path="/comments" component={Comments}/>
                 <Route exact path="/login" render={(routerProps) => <Login history={routerProps.history} />}></Route>
+                <Route exact path="/signup" render={(routerProps) => <Signup history={routerProps.history} />}></Route>
             </div>
         </Switch>
     )

@@ -26,6 +26,6 @@ class StoriesController < ApplicationController
         @story = Story.find(params[:id])
     end
     def story_params
-        params.permit(:user_id, :title, :content)
+        params.permit(:user_id, :title, :content, :saved)
     end
 end

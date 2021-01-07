@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Login from '../components/Login';
-import Signup from '../components/auth/Signup';
 import logo from '../items/logo.png'
 
 export default class Main extends Component{

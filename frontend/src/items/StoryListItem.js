@@ -14,15 +14,12 @@ import React, { Component } from 'react'
 
 class StoryListItem extends Component {
     state = {
-        
+        saved: false
     }
     componentDidMount() {
         this.props.getComments();
     };
-    handleSave = event => {
-        event.preventDefault();
-
-    }
+    
     render() {
         var props = this.props
         return (
@@ -37,7 +34,7 @@ class StoryListItem extends Component {
                     <Accordion.Collapse eventKey="0">
                     <Card.Body>
                         <Card.Text><i>{props.story.content}</i></Card.Text>
-                    <Button variant="outline-success" onClick={this.handleSave}>Save</Button>{' '}<br></br><br></br>
+                    <Button variant="outline-success" onClick={this.handleClick}>{this.state.saved ? "Saved" : "Save"}</Button>{' '}<br></br><br></br>
                     <Accordion>
                         <Card>
                             <Card.Header>

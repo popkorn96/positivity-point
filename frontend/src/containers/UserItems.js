@@ -32,8 +32,6 @@ const mapStateToProps = state => {
         stories: state.stories.all
 }}
 const mapDispatchToProps = dispatch => ({
-    deleteStory: id => dispatch({type: 'FETCH_TO_DELETE_STORY', id}),
-    deletePostIt: id => dispatch({type: 'FETCH_TO_DELETE_POST_IT', id}),
     getPostIts,
     getStories
   })
