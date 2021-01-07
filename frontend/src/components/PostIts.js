@@ -11,7 +11,7 @@ class PostIts extends Component{
     };
     render(){
         return (
-            <div>
+            <div >
                 <br/>
                 <h1 class="text-center">Post Its</h1>
                 <PostItInput createPostIt={this.props.createPostIt} user={this.props.userState}/><br/>

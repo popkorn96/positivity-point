@@ -2,7 +2,9 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
+import Moment from 'moment';
+
 
 export default function PostItItem({postIts}) {
     return (
@@ -18,7 +20,7 @@ export default function PostItItem({postIts}) {
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                    <small className="text-muted">Created at {postIt.created_at}</small>
+                    <small className="text-muted">Posted on {Moment(postIt.created_at).format('MM/DD/YYYY')}</small>
                     </Card.Footer>
                     </Card>
                     </Col>
