@@ -5,7 +5,9 @@ import NavigationBar from "../components/NavigationBar"
 
 class UserSessionStatus extends Component {
   componentDidMount() {
+    console.log('a')
     this.props.sessionStatus();
+    console.log('b')
   }
 
   render() {

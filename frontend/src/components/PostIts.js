@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { getPostIts } from '../redux/actions/postItActions';
 import PostItItem from '../items/PostItItem';
 import PostItInput from '../components/PostItInput';
-import {createPostIt} from '../redux/actions/postItActions'
+import {createPostIt} from '../redux/actions/postItActions';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+
+
 
 class PostIts extends Component{
     componentDidMount() {
@@ -18,7 +22,13 @@ class PostIts extends Component{
                 <i><p>In an effort to ignite positivity, this page is for Positive Post-Its <br/>
                 in which anyone on this app can write things they are grateful for, notes to encourage others, 
                 quotes of mindfulness and more!</p></i><hr/>
-                <PostItItem postIts={this.props.postIts} />
+                <Container>
+                    <Row>
+                    {this.props.postIts.sort((a, b) => a.created_at < b.created_at ? 1 : -1).map((postIt, i) => (
+                    <PostItItem postIt={postIt} key={i} handleUpvote={this.handleUpvote} />
+                    ))}
+                    </Row>
+                </Container>
             </div>
         )
     }

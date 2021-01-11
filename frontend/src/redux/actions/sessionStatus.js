@@ -1,5 +1,6 @@
 export const sessionStatus = () => {
   return (dispatch) => {
+    console.log('c')
     fetch(`http://localhost:3001/status`, {
       headers: {
         "Content-Type": "application/json",
@@ -9,6 +10,7 @@ export const sessionStatus = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        console.log('d')
         if (data.logged_in === true) { 
           dispatch({
               type: "LOGGED_IN",
